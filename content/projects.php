@@ -11,6 +11,7 @@ if ($_GET['opt']=='project_filter' && isset($_GET['cat']) && $_GET['cat']!=='1')
 					$stmt->bindValue(2, $_GET['cat']);
 					$stmt->execute();
 					$results = $stmt->fetchAll();
+
 	}
 }else{
 	if ($stmt =	$dbh->prepare("SELECT * FROM ".$table_prefix."_projects WHERE approved=? ORDER BY create_date DESC")){
@@ -37,13 +38,18 @@ if ($stmt =	$dbh->prepare("SELECT * FROM ".$table_prefix."_categories")){
 ?>
 <?php include('search.php');?>
 <div id="projects_holder">
+<?php 
+	if($_GET['opt']=='project_filter'){
+	?>
+		<script>
+			scroolto("search");
+		</script>
+<?php 
+	} 
+?>
 <?php
 foreach ($results as $project){
-	if($project['pledge_amount']==0.0){
-		$project_percent_funded=round($backed_amount[$project['projectID']]);
-	}else{
-		$project_percent_funded=round(($backed_amount[$project['projectID']]/$project['pledge_amount'])*100);
-	}
+	$project_percent_funded=round(($backed_amount[$project['projectID']]/$project['pledge_amount'])*100);
 	$ended=false;
 	$now = time();
 	$End_date = strtotime($project['project_duration']);

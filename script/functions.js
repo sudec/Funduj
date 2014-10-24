@@ -30,7 +30,7 @@ $(document).ready(function() {
 		$(document).tooltip();
 	});
 
-	$('#signup_go').click(function() {
+/*	$('#signup_go').click(function() {
 		$('.signup_window').bPopup({
 			positionStyle: 'fixed'
 		});
@@ -44,7 +44,7 @@ $(document).ready(function() {
 		$('.error').text("");
 		$('.error').css("visibility", "hidden");
 	});
-	$('#back_project_main_button').click(function() {
+*/	$('#back_project_main_button').click(function() {
 		$('.back_project_popup').bPopup({
 			positionStyle: 'fixed'
 		});

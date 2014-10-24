@@ -44,7 +44,7 @@
 					<?php 
 					}else{
 					?>
-					<div class="button_disabled" title="Tento projekt bol ukončený">Podporiť</div>
+					<div class="button_disabled" title="Tento projekt bol ukončený">Ukončený</div>
 					<?php
 					}
 					?>

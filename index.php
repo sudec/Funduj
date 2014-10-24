@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php error_reporting(E_ERROR | E_WARNING | E_PARSE); 
+
+		ob_start();?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
@@ -76,7 +79,7 @@
 	
 	<?php } 
 	$_SESSION['last_uri'] = $_SESSION['cuurent_uri'];
-	$_SESSION['cuurent_uri'] = "http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
+	$_SESSION['cuurent_uri'] = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	?>
 </head>
 <body>
@@ -224,7 +227,7 @@
 							<div class="fb-login-button" data-max-rows="2" data-size="large" data-show-faces="false" data-auto-logout-link="true"></div>
 							<a href="javascript:void(0)" class="button" onClick="formhash1(document.loginform);">Prihlásiť</a><span class="error1"></span>
 						</form>
-					</div> -->
+					</div> 
 					<div id="signup" class="register_window" style="display: none;" >
 						<form name="register_form" class="register_form" id="register_form" action="javascript:validate_user(new Array('Meno...','Heslo...','Heslo ešte raz...','E-mail...'));" method="post">
 							<h1>Registrácia	</h1>
@@ -235,7 +238,7 @@
 							<input type="text" name="email_reg" id="e_mail_reg" value="E-mail..."  onfocus="clear_input(this,'E-mail...')" onblur="fil_input(this,'E-mail...')"/>
 							<a href="javascript:void(0)" class="button" style="margin-top:20px;" onClick="document.forms['register_form'].submit();">Registrovať</a><span class="error">Nespravne heslo</span>
 						</form>
-					</div>
+					</div>-->
 				</div>
 			</div>
 		</div>
@@ -243,7 +246,6 @@
 				if ($_GET['opt']=='project' || $_GET['opt']=='project_filter' || $_GET['opt']=='faq' || !isset($_GET['opt']) || (($_GET['opt'])=='login' && login_check($dbh) == true))
 				{ ?>	
 							<div id="slider">
-								<div class='loader'><img src='img/ajax_loader_blue_64.gif'></div>
 							</div>
 				
 		<?php }

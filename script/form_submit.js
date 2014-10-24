@@ -43,6 +43,7 @@ function formhash1(form) {
 
 function validate_user(defaults) {
 	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	hide_error_message();
 	if ($("#user_name_reg").length > 0) {
 		$(".error").css("visibility", "hidden");
 		$(".error").text("");
@@ -50,28 +51,25 @@ function validate_user(defaults) {
 		email=	document.getElementById("e_mail_reg").value;
 		//check the lenght of the user name
 		if (username.length <= 4 || username === defaults[0]) {
-			$(".error").css("visibility", "visible");
-			$(".error").text("Meno musí obsahovať aspoň 5 znakov");
+			display_error_message("Meno musí obsahovať aspoň 5 znakov",1);
 			return false;
 		} else {
 			if ((document.getElementById("pass_reg").value).length <= 5 || document.getElementById("pass_reg").value === defaults[1]) {
-				$(".error").css("visibility", "visible");
-				$(".error").text("Heslo musí obsahovať aspoň 6 znakov");
+				display_error_message("Heslo musí obsahovať aspoň 6 znakov",1);
 				return false;
 			} else
 			if (document.getElementById("pass2_reg").value !== document.getElementById("pass_reg").value) {
-				$(".error").css("visibility", "visible");
-				$(".error").text("Heslá sa nezhodujú");
+				display_error_message("Heslá sa nezhodujú",1);
 				return false;
 			} else
 			{
 				if(!filter.test(email)){
-					$(".error").css("visibility", "visible");
-					$(".error").text("Zadajte platný e-mail");
+					display_error_message("Prosím zadajte platnú e-mailovú adresu",1);
 					return false;
 				}else
 				{
-					 add_user();
+					hide_error_message();
+					add_user();
 				}
 			}
 		}
@@ -98,13 +96,7 @@ function add_user() {
 			$(".error").text(obj.responseText);
 		},
 		success: function(response) {
-			$(".error").css("visibility", "visible");
-			$(".error").css("color", "green");
-			$(".error").text("\n Registrácia bola úspešná.")
-				.hide()
-				.fadeIn(500, function() {
-					$('.error');
-				});
+			display_error_message("Ďakujeme za Váš záujem. Vaša registrácia bola úspešná. Na zadanú e-mailovú adresu održíte e-mail spolu s pokynmi pre aktiváciu Vášho konta.",0);
 		}
 	});
 	//return false;
