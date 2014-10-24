@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Pay xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Pay"
+xmlns="http://www.bysquare.com/bysquare">
+ <InvoiceID>2012006</InvoiceID>
+ <Payments>
+ <Payment>
+ <PaymentOptions>paymentorder</PaymentOptions>
+ <Amount>582.35</Amount>
+ <CurrencyCode>EUR</CurrencyCode>
+ <PaymentDueDate>2012-12-06</PaymentDueDate>
+ <VariableSymbol>1200097151</VariableSymbol>
+ <ConstantSymbol>0308</ConstantSymbol>
+ <SpecificSymbol>062012</SpecificSymbol>
+ <PaymentNote>Telefonica: mobile internet - 2012/03</PaymentNote>
+ <BankAccounts>
+ <BankAccount>
+ <IBAN>SK7911000000002628204091</IBAN>
+ <BIC>TATRSKBX</BIC>
+ </BankAccount>
+ <BankAccount>
+ <IBAN>SK8209000000000011424060</IBAN>
+ <BIC>GIBASKBX</BIC>
+ </BankAccount>
+ <BankAccount>
+ <IBAN>SK6402000000002863006757</IBAN>
+ <BIC>SUBASKBX</BIC>
+ </BankAccount>
+ </BankAccounts>
+ </Payment>
+ </Payments>
+</Pay>
