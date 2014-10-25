@@ -22,19 +22,19 @@ function formhash1(form) {
 		url: '/lib/login.php',
 		data: data,
 		beforeSend: function() {
-			//$('#progress').html("<img src='img/loading.gif' />");
+			$("#login_button").css("background-image", "url(img/ajax_button_loader.gif)"); 
+			$("#login_button").css("color","#2099be");  
+			//$("#login_button").html("<img style='margin-left:17px; margin-right:17px;' src='img/ajax_button_loader.gif'>");
 		},
 		error: function(obj,text,error){
-			$(".error1").css("visibility", "visible");
-			$(".error1").css("color", "red");
-			$(".error1").text(obj.responseText);
-			showNotice("error",obj.responseText);
+			//showNotice("error",obj.responseText);
+			$("#login_button").css("background-image", "none");
+			$("#login_button").css("color","#ffffff");  
+			display_error_message(obj.responseText,1);
 		},
 		success: function(response) {
-			$(".error1").css("visibility", "visible");
-			$(".error1").css("color", "green");
-			$(".error1").text(response);
-			location.reload().delay(5000);
+			display_error_message(response,0);
+			location.reload().delay(500);
 		}
 	});
 }
@@ -45,8 +45,6 @@ function validate_user(defaults) {
 	var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	hide_error_message();
 	if ($("#user_name_reg").length > 0) {
-		$(".error").css("visibility", "hidden");
-		$(".error").text("");
 		username = document.getElementById("user_name_reg").value;
 		email=	document.getElementById("e_mail_reg").value;
 		//check the lenght of the user name
@@ -69,6 +67,7 @@ function validate_user(defaults) {
 				}else
 				{
 					hide_error_message();
+
 					add_user();
 				}
 			}
@@ -77,8 +76,6 @@ function validate_user(defaults) {
 }
 
 function add_user() {
-	//event.preventDefault();
-	//Get the data from the submited form
 	data = $("#register_form").serialize();
 	password = document.getElementById("pass_reg").value;
 	passtosubmit = hex_sha512(password);
@@ -89,17 +86,20 @@ function add_user() {
 		url: '/modules/user_management/process_add_user.php',
 		data: data,
 		beforeSend: function() {
-			//$('#progress').html("<img src='img/loading.gif' />");
+			$("#register_button").css("background-image", "url(img/ajax_button_loader.gif)"); 
+			$("#register_button").css("color","#2099be");  
 		},
 		error: function(obj,text,error){
-			$(".error").css("visibility", "visible");
-			$(".error").text(obj.responseText);
+			$("#register_button").css("background-image", "none");
+			$("#register_button").css("color","#ffffff");  
+			display_error_message(obj.responseText,1);
 		},
 		success: function(response) {
+			$("#register_button").css("background-image", "none");
+			$("#register_button").css("color","#ffffff");  
 			display_error_message("Ďakujeme za Váš záujem. Vaša registrácia bola úspešná. Na zadanú e-mailovú adresu održíte e-mail spolu s pokynmi pre aktiváciu Vášho konta.",0);
 		}
 	});
-	//return false;
 }
 
 
@@ -122,7 +122,6 @@ function add_category() {
 				});
 		}
 	});
-	//return false;
 }
 
 function post_my_form(formid, where) {
@@ -136,14 +135,12 @@ function post_my_form(formid, where) {
 		},
 		success: function(html) {
 			$('#progress').html(html)
-			//$('#progress').html("<h3>User updated!</h3>")
 			.hide()
 				.fadeIn(500, function() {
 					$('#message');
 				});
 		}
 	});
-	//return false;
 }
 
 function post_project_form(formid, where) {
@@ -161,12 +158,10 @@ function post_project_form(formid, where) {
 		},
 		success: function(html) {
 			$('#progress').html(html)
-			//$('#progress').html("<h3>User updated!</h3>")
 			.hide()
 				.fadeIn(500, function() {
 					$('#message');
 				});
 		}
 	});
-	//return false;
 }

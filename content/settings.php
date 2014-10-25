@@ -25,8 +25,7 @@ if(login_check($dbh) == true) {
 				<label for="last_name">Priezvisko</label><input type="text" name="last_name" id="last_name" value="<?php echo $user['last_name'];?>">
 				<label for="e_mail">E-mail</label><input type="email" name="e_mail" id="e_mail" value="<?php echo $user['e_mail'];?>">
 				<label for="phone">Telefón</label><input type="text" name="phone" id="phone" value="<?php echo $user['phone'];?>">
-				<label for="about">O Vás</label><textarea title="V krátkosti napíšte niečo o sebe, čím sa môte ostatným použivateľom predstaviť. Ak zakladáte projekt určite odporúčame 
-					túto časť vyplniť." name="about" id="about"><?php echo $user['about'];?></textarea>
+				<label for="about">O Vás</label><textarea name="about" id="about"><?php echo $user['about'];?></textarea>
 				<span class="popis">V krátkosti napíšte niečo o sebe, čím sa môte ostatným použivateľom predstaviť. Ak zakladáte projekt určite odporúčame
 				túto časť vyplniť.</span>
 			</fieldset>

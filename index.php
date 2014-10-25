@@ -209,36 +209,9 @@
 							<?php
 						} 
 						else{
-							echo "<a id='signup_go' name='signup' href='?opt=login' class='button'>Prihlásiť</a><a href='#' id='register_go' class='button'>Registrovať</a>";
+							echo "<a id='signup_go' name='signup' href='?opt=login' class='button signin_button'>Prihlásenie / Registrácia</a>";
 						}
 					 ?>
-					<!--  below div is the popup window for login	
-					<div id="signup" class="signup_window" style="display: none;">
-						<form name="loginform" id="loginform" method="post">
-							<span class="message"></span>
-							<h1>Prihlásenie	</h1>
-							<hr style="	margin-bottom: 30px;"/>
-							<input type="text" name="login_user_name" id="login_user_name" value="Meno..."  onfocus="clear_input(this,'Meno...')" onblur="fil_input(this,'Meno...')"/>
-							<input type="password" name="login_password" id="login_password" value="Heslo..." onfocus="clear_input_pass(this,'Heslo...')" onblur="fil_input_pass(this,'Heslo...')" />
-							<div id="sigup_remem">
-							<input type="checkbox" name="remember" value="remember" id="remember"><label for="remember"><span></span>Zapamätať</label>
-							<a href="javascript:void(0)">Zabudnuté heslo</a>
-							</div>
-							<div class="fb-login-button" data-max-rows="2" data-size="large" data-show-faces="false" data-auto-logout-link="true"></div>
-							<a href="javascript:void(0)" class="button" onClick="formhash1(document.loginform);">Prihlásiť</a><span class="error1"></span>
-						</form>
-					</div> 
-					<div id="signup" class="register_window" style="display: none;" >
-						<form name="register_form" class="register_form" id="register_form" action="javascript:validate_user(new Array('Meno...','Heslo...','Heslo ešte raz...','E-mail...'));" method="post">
-							<h1>Registrácia	</h1>
-							<hr style="	margin-bottom: 30px;">
-							<input type="text" name="user_name_reg" id="user_name_reg" value="Meno..."  onfocus="clear_input(this,'Meno...')" onblur="fil_input(this,'Meno...')"/>
-							<input type="text" name="pass_reg" id="pass_reg" value="Heslo..." onfocus="clear_input_pass(this,'Heslo...')" onblur="fil_input_pass(this,'Heslo...')"/>
-							<input type="text" name="pass2_reg" id="pass2_reg" value="Heslo ešte raz..." onfocus="clear_input_pass(this,'Heslo ešte raz...')" onblur="fil_input_pass(this,'Heslo ešte raz...')"/>
-							<input type="text" name="email_reg" id="e_mail_reg" value="E-mail..."  onfocus="clear_input(this,'E-mail...')" onblur="fil_input(this,'E-mail...')"/>
-							<a href="javascript:void(0)" class="button" style="margin-top:20px;" onClick="document.forms['register_form'].submit();">Registrovať</a><span class="error">Nespravne heslo</span>
-						</form>
-					</div>-->
 				</div>
 			</div>
 		</div>

@@ -30,21 +30,7 @@ $(document).ready(function() {
 		$(document).tooltip();
 	});
 
-/*	$('#signup_go').click(function() {
-		$('.signup_window').bPopup({
-			positionStyle: 'fixed'
-		});
-		$('.error1').text("");
-		$('.error1').css("visibility", "hidden");
-	});
-	$('#register_go').click(function() {
-		$('.register_window').bPopup({
-			positionStyle: 'fixed'
-		});
-		$('.error').text("");
-		$('.error').css("visibility", "hidden");
-	});
-*/	$('#back_project_main_button').click(function() {
+	$('#back_project_main_button').click(function() {
 		$('.back_project_popup').bPopup({
 			positionStyle: 'fixed'
 		});
@@ -97,6 +83,17 @@ $(document).ready(function() {
 		$('#userbox').fadeToggle("fast");
 	});
 
+	$('#loginform input').keydown(function(e) {
+	    if (e.keyCode == 13) {
+	        formhash1(document.loginform);
+	    }
+	});
+
+	$('#register_form input').keydown(function(e) {
+	    if (e.keyCode == 13) {
+	        validate_user(new Array('Meno...','Heslo...','Heslo ešte raz...','E-mail...'));
+	    }
+	});
 
 	/********* Global variables ***********************/
 

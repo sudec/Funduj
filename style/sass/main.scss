@@ -75,6 +75,16 @@ a{
 	}
 }
 
+#login_button, #register_button{
+	background-repeat: no-repeat;
+	background-position: center;
+
+	.loading{
+		background-image: url('../../img/ajax_button_loader.gif');
+		color: $secondary_font_color;
+	}
+}
+
 .save_button{
 	cursor: pointer;
 	padding: 0px 30px;
@@ -99,6 +109,11 @@ a{
 }
 .button:hover{
 	background-color: $primary_color;
+	color:$tertiary_font_color;
+}
+
+.signin_button:hover{
+	background-color: $secondary_color;
 	color:$tertiary_font_color;
 }
 
@@ -139,7 +154,9 @@ a{
 		margin-left: 8px;
 	} 
 
-#signup, #award_popup, #contact_author_popup, #back_project_popup {
+
+
+#signup, #award_popup, #contact_author_popup, #back_project_popup, #register {
 	color: $primary_font_color;
 	font-size: 14px;
 	width: 350px;
@@ -225,6 +242,48 @@ a{
 		border-radius: 4px;
 	}
 }
+
+#signup {
+	  width: 900px;
+	  min-height: 250px; 
+	  display: block;
+	  margin-right: auto;
+	  margin-left: auto;
+	  margin-top: 75px;
+	  padding-bottom: 55px;
+
+  	input[type=text], input[type=password]{
+		width: 270px;
+	}
+	
+	.left {
+		 width: 280px;
+		 min-height: 250px;
+	}
+	.right {
+  		width: 300px;
+  		margin-left: 25px;
+  		border: none;
+  	}
+}
+
+#register {
+	display: block;
+	padding: 0px;
+	width: 280px;
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	box-shadow: 0px 0px 0px rgba(0,0,0,0.7);
+	-webkit-box-shadow: 0 0 0px rgba(0,0,0,0.7);
+	-moz-box-shadow: 0 0px 0px rgba(0,0,0,0.7);
+
+	input[type=text], input[type=password]{
+		width: 280px;
+	}
+}
+
+
 #back_project_popup{
 	font-size: 12px;
 	label{
@@ -257,9 +316,9 @@ a{
 
 #sigup_remem{
 	color:$secondary_font_color;
-	margin-top:20px;
+	margin-top:25px;
 	margin-bottom:25px;
-	margin-top: 50px;
+	margin-left: 1px;
 }
 
 #userbox{
@@ -361,6 +420,7 @@ margin: 0 auto -280px;
 	margin-left: auto ;
   	margin-right: auto ;
   	margin-bottom: 25px;
+  	min-height: 500px;
 }
 
 #search{
@@ -2077,12 +2137,6 @@ label span.error{
   margin-bottom:0px;
 }
 
-#signup{
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
-}
-
 .message_holder{
   font-size:14px;
   background-color:#C8FFBD;
@@ -2166,7 +2220,7 @@ label span.error{
 }
 
 #conect_FB{
-	width:200px;
+	width:205px;
 }
 .btn-fb-login {
   width: 100%;

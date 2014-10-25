@@ -53,6 +53,13 @@ a {
   .button a, .button img {
     border: none; }
 
+#login_button, #register_button {
+  background-repeat: no-repeat;
+  background-position: center; }
+  #login_button .loading, #register_button .loading {
+    background-image: url("../../img/ajax_button_loader.gif");
+    color: #2099be; }
+
 .save_button {
   cursor: pointer;
   padding: 0px 30px;
@@ -76,6 +83,10 @@ a {
 
 .button:hover {
   background-color: #464646;
+  color: white; }
+
+.signin_button:hover {
+  background-color: #2099be;
   color: white; }
 
 .menu {
@@ -110,14 +121,7 @@ a {
   display: block;
   margin-left: 8px; }
 
-#signup .left {
-  width: 350px; }
-
-#signup .right {
-  width: 300px;
-  margin-left: 25px; }
-
-#signup, #award_popup, #contact_author_popup, #back_project_popup {
+#signup, #award_popup, #contact_author_popup, #back_project_popup, #register {
   color: #464646;
   font-size: 14px;
   width: 350px;
@@ -131,21 +135,21 @@ a {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7); }
-  #signup .error, #award_popup .error, #contact_author_popup .error, #back_project_popup .error {
+  #signup .error, #award_popup .error, #contact_author_popup .error, #back_project_popup .error, #register .error {
     visibility: hidden;
     color: red;
     margin-top: 25px;
     display: block;
     margin-left: 8px;
     float: left; }
-  #signup .error1, #award_popup .error1, #contact_author_popup .error1, #back_project_popup .error1 {
+  #signup .error1, #award_popup .error1, #contact_author_popup .error1, #back_project_popup .error1, #register .error1 {
     visibility: hidden;
     color: red;
     margin-top: 4px;
     display: block;
     margin-left: 8px;
     float: left; }
-  #signup .message, #award_popup .message, #contact_author_popup .message, #back_project_popup .message {
+  #signup .message, #award_popup .message, #contact_author_popup .message, #back_project_popup .message, #register .message {
     visibility: hidden;
     display: block;
     float: left;
@@ -153,11 +157,11 @@ a {
     margin-bottom: 5px;
     font-size: 18px;
     font-weight: 700; }
-  #signup h1, #award_popup h1, #contact_author_popup h1, #back_project_popup h1 {
+  #signup h1, #award_popup h1, #contact_author_popup h1, #back_project_popup h1, #register h1 {
     color: #2099be;
     font-size: 18px; }
-  #signup input[type=text], #signup input[type=password], #award_popup input[type=text], #award_popup input[type=password], #contact_author_popup input[type=text], #contact_author_popup input[type=password], #back_project_popup input[type=text], #back_project_popup input[type=password] {
-    width: 338px;
+  #signup input[type=text], #signup input[type=password], #award_popup input[type=text], #award_popup input[type=password], #contact_author_popup input[type=text], #contact_author_popup input[type=password], #back_project_popup input[type=text], #back_project_popup input[type=password], #register input[type=text], #register input[type=password] {
+    width: 350px;
     font-weight: 700;
     font-size: 12px;
     color: #ababab;
@@ -165,7 +169,7 @@ a {
     height: 35px;
     margin-bottom: -1px;
     padding-left: 10px; }
-  #signup input[type="checkbox"] + label span, #award_popup input[type="checkbox"] + label span, #contact_author_popup input[type="checkbox"] + label span, #back_project_popup input[type="checkbox"] + label span {
+  #signup input[type="checkbox"] + label span, #award_popup input[type="checkbox"] + label span, #contact_author_popup input[type="checkbox"] + label span, #back_project_popup input[type="checkbox"] + label span, #register input[type="checkbox"] + label span {
     display: inline-block;
     width: 19px;
     height: 19px;
@@ -174,15 +178,15 @@ a {
     background: url(../../img/check_radio_sheet.png) left top no-repeat;
     cursor: pointer;
     color: #2099be; }
-  #signup input[type="checkbox"]:checked + label span, #award_popup input[type="checkbox"]:checked + label span, #contact_author_popup input[type="checkbox"]:checked + label span, #back_project_popup input[type="checkbox"]:checked + label span {
+  #signup input[type="checkbox"]:checked + label span, #award_popup input[type="checkbox"]:checked + label span, #contact_author_popup input[type="checkbox"]:checked + label span, #back_project_popup input[type="checkbox"]:checked + label span, #register input[type="checkbox"]:checked + label span {
     background: url(../../img/check_radio_sheet.png) -19px top no-repeat;
     color: #2099be; }
-  #signup input[type="checkbox"], #award_popup input[type="checkbox"], #contact_author_popup input[type="checkbox"], #back_project_popup input[type="checkbox"] {
+  #signup input[type="checkbox"], #award_popup input[type="checkbox"], #contact_author_popup input[type="checkbox"], #back_project_popup input[type="checkbox"], #register input[type="checkbox"] {
     display: none; }
-  #signup a, #award_popup a, #contact_author_popup a, #back_project_popup a {
+  #signup a, #award_popup a, #contact_author_popup a, #back_project_popup a, #register a {
     color: #2099be;
     float: right; }
-  #signup .button, #award_popup .button, #contact_author_popup .button, #back_project_popup .button {
+  #signup .button, #award_popup .button, #contact_author_popup .button, #back_project_popup .button, #register .button {
     background-color: #2099be;
     color: white;
     float: left;
@@ -192,8 +196,35 @@ a {
     border-radius: 4px; }
 
 #signup {
-  width: 700px;
-  min-height: 200px; }
+  width: 900px;
+  min-height: 250px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 75px;
+  padding-bottom: 55px; }
+  #signup input[type=text], #signup input[type=password] {
+    width: 270px; }
+  #signup .left {
+    width: 280px;
+    min-height: 250px; }
+  #signup .right {
+    width: 300px;
+    margin-left: 25px;
+    border: none; }
+
+#register {
+  display: block;
+  padding: 0px;
+  width: 280px;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0 0 0px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.7); }
+  #register input[type=text], #register input[type=password] {
+    width: 280px; }
 
 #back_project_popup {
   font-size: 12px; }
@@ -220,8 +251,9 @@ a {
 
 #sigup_remem {
   color: #2099be;
-  margin-bottom: 10px;
-  margin-top: 10px; }
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 1px; }
 
 #userbox {
   min-width: 430px;
@@ -264,7 +296,7 @@ a {
     cursor: pointer; }
 
 #contact_author_popup textarea {
-  width: 336px;
+  width: 348px;
   font-weight: 700;
   font-size: 12px;
   color: #ababab;
@@ -315,25 +347,12 @@ body {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: alpha(opacity=100); }
 
-#slider .loader {
-  background-color: white;
-  min-height: 100%;
-  margin: 0 auto; }
-
-#slider .loader img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 200px;
-  width: 64px;
-  height: 64px;
-  float: none; }
-
 #main_content {
   width: 960px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 25px; }
+  margin-bottom: 25px;
+  min-height: 500px; }
 
 #search {
   color: #464646;
@@ -997,7 +1016,7 @@ body {
     -moz-box-shadow: 0px 5px 10px 0px rgba(50, 50, 50, 0.3);
     box-shadow: 0px 5px 10px 0px rgba(50, 50, 50, 0.3); }
     .project_view_main .reward hr, .project_view_main .reward_all_gone hr {
-      color: white;
+      color: #464646;
       margin-top: 5px;
       margin-bottom: 5px; }
     .project_view_main .reward h1, .project_view_main .reward_all_gone h1 {
@@ -1750,13 +1769,6 @@ label span.error {
   margin-top: 0px;
   margin-bottom: 0px; }
 
-#signup {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 75px;
-  padding-bottom: 55px; }
-
 .message_holder {
   font-size: 14px;
   background-color: #C8FFBD;
@@ -1831,9 +1843,10 @@ label span.error {
   margin-top: 15px; }
 
 #conect_FB {
-  width: 200px; }
+  width: 205px; }
 
 .btn-fb-login {
+  width: 100%;
   height: 30px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 4px;
@@ -1841,8 +1854,7 @@ label span.error {
   background-image: -webkit-linear-gradient(top, #486bb5 0%, #334e87 100%);
   background-image: linear-gradient(to bottom, #486bb5 0%, #334e87 100%);
   box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-  display: inline-block; }
+  cursor: pointer; }
   .btn-fb-login:hover {
     background-image: -webkit-linear-gradient(#486bb5 0%, #233b6c 100%);
     background-image: -o-linear-gradient(#486bb5 0%, #233b6c 100%);
@@ -1885,20 +1897,3 @@ label span.error {
   -o-border-radius: 15px;
   border-radius: 15px;
   font-size: 10px; }
-
-.hiw_holder {
-  display: inline-block; }
-
-.hiw_image {
-  float: left; }
-
-.hiw_image img {
-  width: 200px;
-  height: auto;
-  margin-top: 10px;
-  margin-right: 10px; }
-
-.hiw_content {
-  text-align: justify;
-  float: right;
-  width: 750px; }
