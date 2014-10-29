@@ -61,7 +61,7 @@ function save_changes($dbh1,$table_prefix1){
 	$array['status'] = 'success';
 	$array['message'] = "Údaje boli úspešne uložené";
 	$array = array();
-	if(isset($_POST['new_pass'])){// if new password is posted and it matches the confirm password
+	if(!empty($_POST['new_pass'])){// if new password is posted and it matches the confirm password
 		//chnage password
 		if (strcmp($_POST['new_pass'],$_POST['new_pass2'])==0){
 			if ($stmt =	$dbh1->prepare("SELECT id, username, password, salt FROM ".$table_prefix1."_users WHERE id = ? LIMIT 1")){//select the data to confirm the old passowrd is corect
@@ -104,6 +104,6 @@ function save_changes($dbh1,$table_prefix1){
 		$array['status'] = 'success';
 		$array['message'] = "Údaje boli úspešne uložené";
 	}
-	echo json_encode($array);//not required in production
+	echo json_encode($array);
 }
 ?>

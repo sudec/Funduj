@@ -234,10 +234,17 @@ $(document).ready(function() {
 				display_error_message("Pri ukladaní sa vyskytla chyba. Prosím skúste znova neskôr", 1);
 			},
 			success: function(data) {
-				if (data.status === "error")
+				if (data.status === "error"){
 					display_error_message(data.message, 1);
+					$("#old_pass").val("");
+					$("#new_pass").val("");
+					$("#new_pass2").val("");
+				}
 				else {
 					display_error_message(data.message, 0);
+					$("#old_pass").val("");
+					$("#new_pass").val("");
+					$("#new_pass2").val("");
 				}
 			}
 		});
