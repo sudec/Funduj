@@ -77,7 +77,7 @@ if ($stmt =	$dbh->prepare("SELECT * FROM ".$table_prefix."_categories")){
 				<li id="2"><?php if ($project->last_page_filled >= 2 ){echo "<a href='?opt=new_project&page=2&new_project_id=".$_GET['new_project_id']."'>Základné Informácie</a>";}else{echo "Základné Informácie";}?></li>
 				<li id="3"><?php if ($project->last_page_filled >= 3 ){echo "<a href='?opt=new_project&page=3&new_project_id=".$_GET['new_project_id']."'>Odmeny</a>";}else{echo "Odmeny";}?></li>
 				<li id="4"><?php if ($project->last_page_filled >= 4 ){echo "<a href='?opt=new_project&page=4&new_project_id=".$_GET['new_project_id']."'>Popis</a>";}else{echo "Popis";}?></li>
-				<li id="5"><?php if ($project->last_page_filled >= 5 ){echo "<a href='?opt=new_project&page=5&new_project_id=".$_GET['new_project_id']."'>O Autorovy</a>";}else{echo "O Autorovy";}?></li>
+				<li id="5"><?php if ($project->last_page_filled >= 5 ){echo "<a href='?opt=new_project&page=5&new_project_id=".$_GET['new_project_id']."'>O Autorovi</a>";}else{echo "O Autorovy";}?></li>
 				<li id="6"><?php if ($project->last_page_filled >= 6 ){echo "<a href='?opt=new_project&page=6&new_project_id=".$_GET['new_project_id']."'>Prehľad</a>";}else{echo "Prehľad";}?></li>
 			</ul>
 		</div>

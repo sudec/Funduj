@@ -152,6 +152,7 @@ $(document).ready(function() {
 		$(".active").toggleClass("active");
 		$("#" + id + ".reward_payment").toggleClass("active");
 		var myAward = JSON.parse($("#award_" + id).val());
+		$('#minimal_pledge_value').html(myAward.award_min_val);
 		$('input[name=item_name]').val(myAward.award_title);
 		$('input[name=item_number]').val(myAward.award_id);
 		$('input[name=amount]').val(myAward.award_min_val);
@@ -713,10 +714,31 @@ function validate_save_user_details() {
 				valid = 0;
 			}
 		}
-	}
-	if (valid) {
-		$(".error_user_details").remove();
-		save_user_details();
+		// Validate IBAN
+		$.ajax({
+			type:"POST",
+			url:'/script/php/functions.php',
+			data:{
+				option:"check_IBAN",
+				IBAN: $("#IBAN").val()
+			},
+			dataType:'json',
+			async:true,
+			error: function(){},
+			success: function(response){
+				if (response.result){
+					$("#IBAN").css("background-color", "#FFDADA");
+					valid = 0;
+				}else{
+					$("#IBAN").val(response.human_IBAN);
+					/*    SUBMIT the user details  *///
+					if (valid) {
+						$(".error_user_details").remove();
+						save_user_details();
+					}
+				}
+				},
+		});
 	}
 }
 
@@ -1146,4 +1168,46 @@ function change_settings_picture(files) {
 			$("#usr_img").html("<img name=" + files + " id=" + files + " src='users/" + response.user_id + "/img/" + files + "'>");
 		}
 	});
+}
+
+function check_IBAN(input, default_text){
+	if ($(input).val() === default_text) {
+		/****************To be removed**********************/
+		console.log("check_IBAN: default text was entered");
+		/******************************************************/
+		$(input).val("");
+		$(input).css("color", "#2b2b2b");
+	}else{
+		//The below ajax part of the code causes issues
+		if ($(input).val() === "") {
+			/****************To be removed**********************/
+			console.log("check_IBAN: empty text in IBAN field");
+			/******************************************************/
+			fil_input(input, default_text);
+		}else{
+
+				/****************To be removed**********************/
+				console.log("check_IBAN: AJAX function called");
+				/******************************************************/
+			$.ajax({
+				type:"POST",
+				url:'/script/php/functions.php',
+				data:{
+					option:"check_IBAN",
+					IBAN: $(input).val()
+				},
+				dataType:'json',
+				async:true,
+				error: function(){},
+				success: function(response){
+					if (response.result){
+						display_error_message('Nesprávny IBAN',1);
+					}else{
+						$(input).val(response.human_IBAN);
+					}
+
+				},
+			});
+		}
+	}
 }

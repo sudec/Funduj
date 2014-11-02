@@ -20,7 +20,7 @@
 	<h1>
 		1. Prosím zadajte čiastku akou si želáte prispieť
 	</h1>
-	<span class="currencyinput">€<input type="text" id="fund_amount" class="fund_amount" name="fund_amount" <?php if ($amount>0) {echo "value='".$amount."'";} else {echo "value=1.00";} ?>></span><label for="fund_amount" id="amount_label">Je na Vás koľko prispejete.<br /> Minimálna čiastka je 1€.</label>
+	<span class="currencyinput">€<input type="text" id="fund_amount" class="fund_amount" name="fund_amount" <?php if ($amount>0) {echo "value='".$amount."'";} else {echo "value=1.00";} ?>></span><label for="fund_amount" id="amount_label">Je na Vás koľko prispejete.<br /> Minimálna čiastka pre vybranú odmenu je <span id="minimal_pledge_value">1</span> €.</label>
 	<h1>
 		2. Prosím vyberte si odmenu
 	</h1>
@@ -57,20 +57,20 @@
 					$delivery = sk_datum(strtotime($award['delivery_date']));
 					if (($award['available']>$award['backers'] || $award['available']==0)) {
 						echo ("<a class='back_project_payment' id='".$award['entryID']."' href='javascript:void(0)'>");
-					echo("
-					<div class='reward_payment' id='".$award['entryID']."'>
-						<div class='award_left'>
-							<input type='radio' name='award_select' value='{\"award_id\":\"".$award['entryID']."\",\"award_min_val\":\"".$award['amount']."\",\"award_description\":\"".$award['description']."\", \"award_title\":\"".$award['title']."\",\"user_id\":\"".$_SESSION['user_id']."\", \"project_id\":\"".$id."\"}' id='award_".$award['entryID']."'>
-							<label for='".$award['entryID']."'>".$award['amount']." € a viac</label>
-						</div>
-						<div class='award_right'>
-							<div class='payment_content'>
-								 ".$award['description']."
-								<p class='".$color."'>".$available."</p>
-								<p>Dátum dodania: ".$delivery."</p>
+						echo("
+						<div class='reward_payment' id='".$award['entryID']."'>
+							<div class='award_left'>
+								<input type='radio' name='award_select' value='{\"award_id\":\"".$award['entryID']."\",\"award_min_val\":\"".$award['amount']."\",\"award_description\":\"".$award['description']."\", \"award_title\":\"".$award['title']."\",\"user_id\":\"".$_SESSION['user_id']."\", \"project_id\":\"".$id."\"}' id='award_".$award['entryID']."'>
+								<label for='".$award['entryID']."'>".$award['amount']." € a viac</label>
 							</div>
-						</div>
-					</div>");
+							<div class='award_right'>
+								<div class='payment_content'>
+									 ".$award['description']."
+									<p class='".$color."'>".$available."</p>
+									<p>Dátum dodania: ".$delivery."</p>
+								</div>
+							</div>
+						</div>");
 						echo "</a><hr>";
 					}
 				}
