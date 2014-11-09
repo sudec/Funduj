@@ -1,5 +1,5 @@
 <?php 
-// Adding a test comments
+// Adding a test comments - This will be synced from cloud 9
 //include($_SERVER['DOCUMENT_ROOT'].'/adodb/adodb.inc.php');
 include($_SERVER['DOCUMENT_ROOT'].'/classes/db.class.php');
 include($_SERVER['DOCUMENT_ROOT'].'/config.php');
