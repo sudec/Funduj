@@ -188,6 +188,13 @@ a{
 		margin-left: 8px;
 		float: left;
 	}
+	.error2{
+		visibility: hidden;
+		margin-top: 4px;
+		display: block;
+		margin-left: 8px;
+		float: left;
+	}
 	.message{
 		visibility: hidden; 
 		display: block;
@@ -436,10 +443,10 @@ margin: 0 auto -280px;
 #search ul{
 	list-style:none;
 	z-index: 100;
+	display: inline-block;
 } 
 
 #search ul li {
-	display: inline-block;
 	position: relative;
 	background: #fff;
 	cursor: pointer;
@@ -500,6 +507,17 @@ margin: 0 auto -280px;
   visibility: visible;
 }
 
+.filter_status{
+	margin-top: -27px;
+	margin-left: 283px;
+	font-size: 15px;
+
+	label{
+		padding-right: 13px;
+		font-size: 15px;
+		padding-left: 4px;
+	}
+}
 
 #projects_holder{
 	width: 960px;
@@ -2275,4 +2293,18 @@ label span.error{
   text-align:center;
   @include border-radius(15px);
   font-size:10px;
+}
+
+/**************************************/
+#reset_pwd{
+	width: 300px;
+
+	input [type="text"]{
+		width: 300px; 
+	}
+
+	p{
+		margin-bottom: 15px;
+		text-align: justify;
+	}
 }
