@@ -27,7 +27,7 @@ if ($select_stmt = $dbh->prepare("SELECT username, e_mail, password, salt, membe
 								include('content/login_form.php');
 							}
 						}else{
-							?><script>display_error_message("Aktivančný odkaz nie je platný.",1);</script><?php
+							?><script>display_error_message("Aktivančný odkaz nie je platný alebo už bol použitý.",1);</script><?php
 							if(login_check($dbh) == false){
 								include('content/login_form.php');
 							}
@@ -43,7 +43,12 @@ if ($select_stmt = $dbh->prepare("SELECT username, e_mail, password, salt, membe
 								  $insert_stmt->bindValue(5, $results['member_since']);
 								  // Execute the prepared query.
 								  $insert_stmt->execute();
-								
+						
+								  $last_inserted_user_id=$dbh->lastInsertId();
+								  mkdir($_SERVER['DOCUMENT_ROOT']."/users/".$last_inserted_user_id,0755);
+								  mkdir($_SERVER['DOCUMENT_ROOT']."/users/".$last_inserted_user_id."/img",0755);
+								  mkdir($_SERVER['DOCUMENT_ROOT']."/users/".$last_inserted_user_id."/img/thumb",0755);
+								  mkdir($_SERVER['DOCUMENT_ROOT']."/users/".$last_inserted_user_id."/img/large_thumb",0755);
 								// Delete the entry from the temporary users database
 								 if ($select_stmt = $dbh->prepare("DELETE FROM ".$table_prefix."_users_not_confirmed WHERE confirm_hash=? and id=? LIMIT 1")) {    
 										$select_stmt->bindValue(1, $confirm_has);
@@ -51,6 +56,7 @@ if ($select_stmt = $dbh->prepare("SELECT username, e_mail, password, salt, membe
 										  // Execute the prepared query.
 										$select_stmt->execute();
 								 }
+						
 						
 								?><script>display_error_message("Vaše konto bolo úspešne aktivované. Môžete sa prihlásiť.","0");</script><?php
 					}else{

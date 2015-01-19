@@ -4,7 +4,7 @@ sec_session_start();
 $_SESSION['curent_new_project_ID']=$_GET['new_project_id']; ?>
 
 <div class="newpr_editor_left">
-	<textarea id="editor1" class="description" style="margin-bottom:20px;"><?php if ($curentuser==1 && strlen($project_description)>1){  echo ($project_description);} ?></textarea>
+	<textarea id="editor1" class="description" style="margin-bottom:20px;"><?php if ($curentuser==1 && strlen($project_description)>1){  echo (html_entity_decode($project_description,ENT_COMPAT,cp1251));} ?></textarea>
 	<script>
 		CKEDITOR.replace( 'editor1',{
 			language:'sk',

@@ -51,7 +51,7 @@ $(document).ready(function() {
 			positionStyle: 'fixed'
 		});
 		$('#error_author').css("visibility", "hidden");
-		$("#error_author").attr("class", "error1 red");
+		$("#error_author").attr("class", "error2 red");
 		$("#message_subject").val("");
 		$("#message_body").val("");
 	});
@@ -212,7 +212,7 @@ $(document).ready(function() {
 		}
 		$("#paypal_form").submit();
 	});
-
+	
 
 	/*******************************************************************/
 
@@ -251,6 +251,8 @@ $(document).ready(function() {
 		});
 		e.preventDefault(); //STOP default action
 	});
+	
+	
 });
 /*************************************************************************************************************************************/
 /*************************************************************************************************************************************/
@@ -1003,10 +1005,12 @@ function send_message(to, from) {
 	var subject = $('#message_subject').val();
 	var message = $('#message_body').val();
 	if (to === from) {
+		$("#error_author").addClass("red");
 		$('#error_author').text("Luťujeme ale nemožete poslať správu sebe");
 		$('#error_author').css("visibility", "visible");
 	} else {
 		if (subject.length <= 1 || message.length <= 1) {
+			$("#error_author").addClass("red");
 			$('#error_author').text("Prosim vyplňte všetky polia");
 			$('#error_author').css("visibility", "visible");
 		} else {
@@ -1027,6 +1031,7 @@ function send_message(to, from) {
 					$('#message_send_button').html("<img src='../img/gif_load_30px.gif'>");
 				},
 				error: function(obj, text, error) {
+					$("#error_author").removeClass("green").addClass("red");
 					$('#error_author').text("Pri odosielaní nastala chyba");
 					$('#error_author').css("visibility", "visible");
 				},
@@ -1035,9 +1040,9 @@ function send_message(to, from) {
 					$("#message_body").val("");
 					$("#message_subject").val("");
 					$("#message_subject").val("Predmet...");
+					$("#error_author").removeClass("red").addClass("green");
 					$("#error_author").text("Vaša správa bola odoslaná!");
 					$('#error_author').css("visibility", "visible");
-					$("#error_author").attr("class", "error1 green");
 				}
 			});
 		}
@@ -1208,6 +1213,75 @@ function check_IBAN(input, default_text){
 
 				},
 			});
+		}
+	}
+}
+
+function send_lost_password(){
+	var mail = $('#reset_pwd_mail').val();
+	var username = $('#reset_pwd_user').val();
+		$.ajax({
+		type: "POST",
+		url: '/lib/change_password.php',
+		data: {
+			option: "2",
+			mail: mail,
+			username: username
+		},
+		dataType: 'json',
+		async: true,
+		error: function(response) {
+			console.log(response);
+		},
+		success: function(response) {
+			console.log(response);
+			if (response.status === 'error'){
+				display_error_message(response.message, 1);
+			}else{
+				display_error_message(response.message, 0);
+			}
+		}
+	});
+}
+
+function change_lost_password(defaults_text){
+	hide_error_message();
+	var pass1 = $('#reset_pwd1').val();
+	var pass2 = $('#reset_pwd2').val();
+	var string = $.getUrlVar('dlksje');
+	var new_pass_enc = hex_sha512(pass1);
+	var new_pass_enc2 = hex_sha512(pass2);
+	if ((document.getElementById("reset_pwd1").value).length <= 5 || document.getElementById("reset_pwd1").value === defaults_text) {
+		display_error_message("Heslo musí obsahovať aspoň 6 znakov",1);
+		return false;
+	}else{
+		if (pass1 === pass2){
+			$.ajax({
+				type: "POST",
+				url: '/lib/change_password.php',
+				data: {
+					option: "1",
+					new_pass_enc: encodeURIComponent(new_pass_enc),
+					new_pass_enc2: encodeURIComponent(new_pass_enc2),
+					string: string
+				},
+				dataType: 'json',
+				async: true,
+				error: function(response) {
+					console.log(response);
+				},
+				success: function(response) {
+					console.log(response);
+					if (response.status === 'error'){
+						display_error_message(response.message, 1);
+					}else{
+						display_error_message(response.message, 0);
+					}
+				}
+			});
+		}else{
+			display_error_message("Heslá sa nezhodujú.", 1);
+			return false;
 		}
 	}
 }

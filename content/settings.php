@@ -33,7 +33,7 @@ if(login_check($dbh) == true) {
 				<legend>Ostatné</legend>
 				<label for="usr_img" >Obrázok</label>
 				<div id="usr_img"><img src="users/<?php echo $user['id'].'/img/'.$user['img'];?>"></div>
-				<label for="fileuploader" >Nahrať obrázok</label>
+				<label for="fileuploader2" >Nahrať obrázok</label>
 				<div id="fileuploader2">Vybrať</div>
 				<label for="conect_FB" >Facebook</label>
 				<?php if (strlen($user['FB_id'])<5) {?>

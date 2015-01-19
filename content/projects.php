@@ -4,9 +4,20 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/lib/db.php');
 require_once $_SERVER['DOCUMENT_ROOT'].'/lib/session.php';
 sec_session_start();
 
+if (isset($_GET['stat'])){
+	if ($_GET['stat']==1){
+		$status = 'AND project_duration > NOW()';
+	}elseif($_GET['stat']==0){
+		$status = 'AND project_duration < NOW()';
+	}elseif($_GET['stat']==2){
+		$status = '';
+	}
+}else{
+	$status = 'AND project_duration > NOW()';
+}
 
 if ($_GET['opt']=='project_filter' && isset($_GET['cat']) && $_GET['cat']!=='1'){
-	if ($stmt =	$dbh->prepare("SELECT * FROM ".$table_prefix."_projects WHERE approved=? AND project_category=? ORDER BY create_date DESC")){
+	if ($stmt =	$dbh->prepare("SELECT * FROM ".$table_prefix."_projects WHERE approved=? AND  project_category=? ".$status." ORDER BY create_date DESC")){
 					$stmt->bindValue(1, $approved=1);
 					$stmt->bindValue(2, $_GET['cat']);
 					$stmt->execute();
@@ -14,7 +25,7 @@ if ($_GET['opt']=='project_filter' && isset($_GET['cat']) && $_GET['cat']!=='1')
 
 	}
 }else{
-	if ($stmt =	$dbh->prepare("SELECT * FROM ".$table_prefix."_projects WHERE approved=? ORDER BY create_date DESC")){
+	if ($stmt =	$dbh->prepare("SELECT * FROM ".$table_prefix."_projects WHERE approved=? ".$status." ORDER BY create_date DESC")){
 					$stmt->bindValue(1, $approved=1);
 					$stmt->execute();
 					$results = $stmt->fetchAll();

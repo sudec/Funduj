@@ -147,7 +147,7 @@
 										<h1>
 											Môj účet
 										</h1>
-										<p><i class="fa fa-users"></i> Aktivity</p>
+										<!--<p><i class="fa fa-users"></i> Aktivity</p>-->
 										<p><a href="?opt=msg"><i class="fa fa-envelope-o"></i> Pošta (<?php echo $new_messages_count ;?>)</a></p>
 										<!--<p><i class="fa fa-eye"></i> Prezrené projekty</p>
 										<p><i class="fa fa-user"></i> Osobné údaje</p>-->
@@ -269,6 +269,12 @@
 				}
 				elseif(($_GET['opt'])=='login' && login_check($dbh) == false){
 					include('content/login_form.php');
+				}
+				elseif(($_GET['opt'])=='res_pwd' && login_check($dbh) == false){
+					include('content/reset_password.php');
+				}
+				elseif(($_GET['opt'])=='lost_pwd' && login_check($dbh) == false){
+					include('content/new_password.php');
 				}
 				elseif(($_GET['opt'])=='how_it_works'){
 					include('content/akonato.php');

@@ -23,7 +23,7 @@
 				</div>
 			</div>
 			<div class="description">
-				<?php echo html_entity_decode($project->project_description); ?>
+				<?php echo html_entity_decode($project->project_description,ENT_COMPAT,cp1251);?>
 			</div>
 		</div>
 		<div class="right">
@@ -66,9 +66,17 @@
 					<a href="<?php echo  $usr->FB_account; ?> " target="_blank"><p style="margin-top:15px;"><i class="fa fa-facebook"></i> Facebook</p></a>
 					<hr>
 					<p style="margin-bottom:25px;"><a href="http://<?php echo  $usr->web_page; ?>" target="_blank"><?php echo  $usr->web_page; ?></a></p>
-					<div class="button" id="contact_author_button">
-						Kontaktovať autora
-					</div>
+					<?php  if (login_check($dbh) == true){ ?>
+						<div class="button" id="contact_author_button">
+							Kontaktovať autora
+						</div>
+					<?php }else{?>
+						<a href="?opt=login">
+							<div class="button" id="contact_author" style="float:left;">
+								Kontaktovať autora
+							</div>
+						</a>
+					<?php } ?>
 				</div>
 			</div>
 				<?php
@@ -114,7 +122,7 @@
 				}
 				?>
 		</div>
-		<!-- *************************  Cantact author popup *****************  -->
+		<!-- *************************  Contact author popup *****************  -->
 		<div id='contact_author_popup' class='contact_author_popup' style='display: none;'>
 			<h1> Odoslať správu používateľovi <?php echo  $project->author; ?></h1>
 			<input type="text" name="message_subject" id="message_subject" value="Predmet..."  onfocus="clear_input(this,'Predmet...')" onblur="fil_input(this,'Predmet...')"/>
@@ -124,7 +132,7 @@
 			<?php } else {?>
 			<p class="red">Pre posielanie správ musíte byť prihlásený</p>
 			<?php }
-			echo ("<p class='error1 red' id='error_author'>Text</p>");
+			echo ("<p class='error2 red' id='error_author'>Text</p>");
 			?>		
 		</div>
 		<!-- *************************   award popup *****************  -->

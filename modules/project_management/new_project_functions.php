@@ -110,8 +110,8 @@ function save_project_image($dbh1,$table_prefix){
 }
 
 function save_description($dbh1,$table_prefix){
-	$description=htmlentities($_POST['project_description'], ENT_QUOTES, "ISO-8859-1");
-	
+	$description=htmlentities($_POST['project_description'], ENT_QUOTES, "cp1251");
+	//$description=$_POST['project_description'];
 	//htmlspecialchars( (string)$_POST['project_description'] );
 	echo("descritpion".$description);
 	if ($stmt =	$dbh1->prepare("UPDATE ".$table_prefix."_projects SET project_description=? WHERE projectID=?")){
