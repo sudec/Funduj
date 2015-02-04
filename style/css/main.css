@@ -365,10 +365,11 @@ body {
 
 #search ul {
   list-style: none;
-  z-index: 100; }
+  z-index: 100; 
+  display: inline-block;
+ }
 
 #search ul li {
-  display: inline-block;
   position: relative;
   background: #fff;
   cursor: pointer;
@@ -422,6 +423,17 @@ body {
   display: block;
   opacity: 1;
   visibility: visible; }
+
+.filter_status {
+  margin-top: -27px;
+  margin-left: 283px;
+  font-size: 15px; 
+}
+.filter_status label {
+  padding-right: 13px;
+  font-size: 15px;
+  padding-left: 4px; 
+}
 
 #projects_holder {
   width: 960px; }
@@ -1874,7 +1886,19 @@ label span.error {
     padding: 0 10px;
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.5);
     box-shadow: -1px 0 0 rgba(255, 255, 255, 0.1);
-    border-left: 1px solid rgba(0, 0, 0, 0.3); }
+    border-left: 1px solid rgba(0, 0, 0, 0.3); 
+  }
+
+#reset_pwd {
+  width: 300px; 
+}
+#reset_pwd input [type="text"] {
+  width: 300px; 
+}
+#reset_pwd p {
+  margin-bottom: 15px;
+  text-align: justify; 
+}
 
 .popis {
   font-size: 14px;
