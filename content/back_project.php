@@ -77,7 +77,14 @@
 				?>
 	</div>
 	<h1>
-		3. Prosím vyberte si spôsob platby
+		3. Anonymny prispevok
+	</h1>
+	<div id="public_backing">
+		<input type="checkbox" id="public_backing_chckbx" name="public_backing_chckbx"> <label for="public_backing_chckbx">Nezobrazovat moje meno v zozname prispievatelov tohto projektu</label>
+
+	</div>
+	<h1>
+		4. Prosím vyberte si spôsob platby
 	</h1>
 	<div id="wire" class="payment_type" title="Po vybraní tejto možnosti Vám bude vygenerovaný platobný príkaz na základe ktorého môžete uhradiť svoj príspevok.">
 			Prevodom na účet

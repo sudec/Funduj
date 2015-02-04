@@ -121,7 +121,7 @@ if($exists<=0 || $project->approved!=1){
 			Od <?php echo  $project->author; ?> v kategórii <?php echo $results_category['name']?>
 		</div>
 	<div class="project_menu">
-		<?php echo "<a href='?opt=project&id=".$_GET['id']."' class='active' id='projekt'>" ?>Projekt</a><a href="javascript:void(0);" onclick="switch_project_content(2);" id='komentar'>Komentáre</a><a href="#" onclick="switch_project_content(3); " id='novinky'>Novinky</a>
+		<?php echo "<a href='?opt=project&id=".$_GET['id']."' class='active' id='projekt'>" ?>Projekt</a><a href="javascript:void(0);" onclick="switch_project_content(2);" id='komentar'>Komentáre</a><a href="#" onclick="switch_project_content(3); " id='novinky'>Novinky</a><a href="#" onclick="switch_project_content(4); " id='backers'>Podporili</a>
 	</div>
 	<div id="main_project_content_holder">
 		<?php include('project_view_project.php'); ?>

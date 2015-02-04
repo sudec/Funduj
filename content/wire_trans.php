@@ -8,6 +8,13 @@ $project_id = $_GET['project_id'];
 $award_id = $_GET['award_id'];
 $prevent_backing = false;
 $now = time();
+
+if ($_GET['public']=='false'){
+	$public = 1;
+}else{
+	$public = 0;
+}
+
    // All login attempts are counted from the past 2 hours. 
 $valid_attempt = $now - (2 * 60 * 60);
 if(login_check($dbh) == true) {
@@ -25,12 +32,13 @@ if(login_check($dbh) == true) {
 		}
 	}
 	if ($prevent_backing==false){
-		if ($stmt =	$dbh->prepare("INSERT INTO ".$table_prefix."_backing (projectID, backer_ID, award_ID, amount, type) VALUES (?, ?, ?, ?, ?)")){
+		if ($stmt =	$dbh->prepare("INSERT INTO ".$table_prefix."_backing (projectID, backer_ID, award_ID, amount, type, public) VALUES (?, ?, ?, ?, ?, ?)")){
 					$stmt->bindValue(1, $project_id);
 					$stmt->bindValue(2, $_SESSION['user_id']);
 					$stmt->bindValue(3, $award_id);
 					$stmt->bindValue(4, round($_GET['amount'],2));
 					$stmt->bindValue(5, $type="wire_trans");
+					$stmt->bindValue(6, $public);
 					$stmt->execute();
 					$last_backing_id=$dbh->lastInsertId();
 		}

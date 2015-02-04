@@ -149,12 +149,6 @@ a {
     display: block;
     margin-left: 8px;
     float: left; }
-  #signup .error2, #award_popup .error2, #contact_author_popup .error2, #back_project_popup .error2, #register .error2 {
-    visibility: hidden;
-    margin-top: 4px;
-    display: block;
-    margin-left: 8px;
-    float: left; }
   #signup .message, #award_popup .message, #contact_author_popup .message, #back_project_popup .message, #register .message {
     visibility: hidden;
     display: block;
@@ -371,10 +365,10 @@ body {
 
 #search ul {
   list-style: none;
-  z-index: 100;
-  display: inline-block; }
+  z-index: 100; }
 
 #search ul li {
+  display: inline-block;
   position: relative;
   background: #fff;
   cursor: pointer;
@@ -428,15 +422,6 @@ body {
   display: block;
   opacity: 1;
   visibility: visible; }
-
-.filter_status {
-  margin-top: -27px;
-  margin-left: 283px;
-  font-size: 15px; }
-  .filter_status label {
-    padding-right: 13px;
-    font-size: 15px;
-    padding-left: 4px; }
 
 #projects_holder {
   width: 960px; }
@@ -1913,11 +1898,67 @@ label span.error {
   border-radius: 15px;
   font-size: 10px; }
 
-/**************************************/
-#reset_pwd {
-  width: 300px; }
-  #reset_pwd input [type="text"] {
-    width: 300px; }
-  #reset_pwd p {
-    margin-bottom: 15px;
-    text-align: justify; }
+.backer_list{
+  width: 750px;
+  min-height: 50px;
+  margin-right: auto;
+  margin-left: 50px;
+  border-bottom: 1px solid;
+  float: left;
+  padding-top: 5px;
+}
+
+.backer_list:first-child {
+  border-top: 1px solid;
+}
+
+.backer_list:last-child {
+  border-bottom: 0px solid;
+}
+
+.backer_img img{
+  width:auto;
+  height: 50px;
+  padding-right: 5px;
+}
+.backer_img{
+float:left;
+}
+
+.backer_amount{
+  width: 150px;
+  float: right;
+  margin-top: 15px;
+}
+
+.backer_username{
+  float: left;
+  margin-top: 15px;
+}
+
+.rotate_image_180{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.backing_sort{
+  width: 690px;
+  margin-bottom: 15px;
+}
+
+.backing_sort img{
+  float: right;
+  cursor: pointer;
+  padding-left: 2px;
+}
+
+#public_backing label{
+  font-size: 14px;
+}
+
+#public_backing {
+  padding-left: 15px;
+}
