@@ -28,7 +28,7 @@
 				</ul>
 		</li>
 	</ul>
-	<?
+	<?php
 	if (isset($_GET['stat'])){
 				if ($_GET['stat']==1){
 					$current_stat = "Aktívne";

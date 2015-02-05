@@ -32,7 +32,7 @@ function change_password($dbh1, $table_prefix1){
 					$insert_stmt->bindParam(3, $stmt->result['user_id']);
 					$insert_stmt->execute();
 					$array['status'] = 'success';
-					$array['message'] = "Heslo bolo úspešne zmenené";
+					$array['message'] = "Heslo bolo úspešne zmenené. Budete presmerovany na prihlasovaciu stranku.";
 					
 					if ($select_stmt = $dbh1->prepare("DELETE FROM ".$table_prefix1."_password_reset WHERE hash=?")) {    
 						$select_stmt->bindValue(1, $_POST['string']);

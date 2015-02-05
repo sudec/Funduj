@@ -216,7 +216,7 @@
 			</div>
 		</div>
 		<?php 
-				if ($_GET['opt']=='project' || $_GET['opt']=='project_filter' || $_GET['opt']=='faq' || !isset($_GET['opt']) || (($_GET['opt'])=='login' && login_check($dbh) == true))
+				if (/*$_GET['opt']=='project' ||*/ $_GET['opt']=='project_filter' || $_GET['opt']=='faq' || !isset($_GET['opt']) || (($_GET['opt'])=='login' && login_check($dbh) == true))
 				{ ?>	
 							<div id="slider">
 							</div>

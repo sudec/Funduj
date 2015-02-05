@@ -78,7 +78,9 @@ $(document).ready(function() {
 		$(".error").css("color", "red");
 		$(".error").css("visibility", "hidden");
 	});
-
+/**
+ * Register Enter button 
+ */
 	$('#user_name_main').on('click', function() {
 		$('#userbox').fadeToggle("fast");
 	});
@@ -94,7 +96,18 @@ $(document).ready(function() {
 	        validate_user(new Array('Meno...','Heslo...','Heslo ešte raz...','E-mail...'));
 	    }
 	});
+        
+        $('#reset_pwd input').keydown(function(e) {
+	    if (e.keyCode == 13) {
+	        change_lost_password('Nové heslo...');
+	    }
+	});
 
+        $('#send_lost_pwd input').keydown(function(e) {
+	    if (e.keyCode == 13) {
+	        send_lost_password();
+	    }
+	});
 	/********* Global variables ***********************/
 
 	$("#fileuploader").uploadFile({
@@ -1158,6 +1171,26 @@ function display_error_message(msg, type) {
 	}
 }
 
+function display_error_message(msg, type, timeout) {
+	//type:
+	//1 - error (red)
+	//0 - info (green)
+        //*****************
+        //timeout is provided in seconds
+	$(".message_holder").text(msg);
+	$('.message_holder').show("fast");
+	if (type === 1) {
+		$('.message_holder').css("background-color", "#FFBFBF");
+	}
+	if (type === 0) {
+		$('.message_holder').css("background-color", "#C8FFBD");
+		$('.message_holder').delay(timeout*1000).hide("slow");
+	}
+	if (isScrolledIntoView(".message_holder") === false) {
+		scroolto("error_message_holder");
+	}
+}
+
 function hide_error_message() {
 	$(".message_holder").text("");
 	$('.message_holder').css("display", "none");
@@ -1257,7 +1290,9 @@ function send_lost_password(){
 					if (response.status === 'error'){
 						display_error_message(response.message, 1);
 					}else{
-						display_error_message(response.message, 0);
+						display_error_message(response.message, 0, 15);
+                                                $('#reset_pwd_mail').val("");
+                                                $('#reset_pwd_user').val("");
 					}
 				}
 	});
@@ -1294,7 +1329,13 @@ function change_lost_password(defaults_text){
 						if (response.status === 'error'){
 							display_error_message(response.message, 1);
 						}else{
-							display_error_message(response.message, 0);
+							display_error_message(response.message, 0, 15);
+                                                        $('#reset_pwd1').val("");
+                                                        $('#reset_pwd2').val("");
+                                                        setTimeout(function(){
+                                                            window.location.replace("?opt=login");
+                                                       }, 3000); 
+                                                        
 						}
 					}
 			});

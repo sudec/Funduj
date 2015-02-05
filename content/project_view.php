@@ -1,6 +1,6 @@
 <script>
 $( document ).ready(function() {
-  scroolto("project_view_main");
+  //scroolto("project_view_main");
 });
 </script>
 <?php
@@ -14,6 +14,8 @@ $total_amount_pledged=0;
 $total_backers=0;
 $project_backed_by_thi_user=0;
 $_SESSION['open_project_id']=$_GET['id'];
+$project = new stdClass();
+$usr = new stdClass();
 
 if ($stmt =	$dbh->prepare("SELECT * FROM ".$table_prefix."_projects INNER JOIN ".$table_prefix."_users ON ".$table_prefix."_projects.userID=".$table_prefix."_users.id WHERE projectID=?")){
         	    $stmt->bindValue(1, $_GET['id']);
@@ -100,7 +102,7 @@ if ($days_remaining<0){
 }
 
 
-include('search.php');
+//include('search.php');
 if($exists<=0 || $project->approved!=1){
 ?>
 

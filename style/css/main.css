@@ -5,7 +5,7 @@
   color: #009900; }
 
 .red {
-  color: #ff2828; }
+  color: #FF2828; }
 
 .left {
   float: left; }
@@ -13,7 +13,7 @@
 .right {
   float: right; }
 
-/*
+/**
 To use Titilium web font, include the following in the page:
 <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600,700' rel='stylesheet' type='text/css'>
 */
@@ -22,10 +22,12 @@ a {
 
 #top {
   background: #464646;
-  color: white;
+  color: #fff;
   width: 100%;
   min-width: 960px;
-  height: 45px; }
+  height: 45px;
+  position: fixed;
+  z-index: 1000000; }
 
 #top_center {
   min-height: 45px;
@@ -45,7 +47,7 @@ a {
   line-height: 45px;
   padding: 0px 15px;
   background-color: #2b2b2b;
-  color: white;
+  color: #fff;
   font-size: 14px;
   text-decoration: none;
   display: inline-block;
@@ -64,7 +66,7 @@ a {
   cursor: pointer;
   padding: 0px 30px;
   background-color: #009900;
-  color: white;
+  color: #fff;
   font-size: 14px;
   float: right;
   text-decoration: none;
@@ -83,16 +85,16 @@ a {
 
 .button:hover {
   background-color: #464646;
-  color: white; }
+  color: #fff; }
 
 .signin_button:hover {
   background-color: #2099be;
-  color: white; }
+  color: #fff; }
 
 .menu {
   line-height: 45px;
   padding: 0px 15px;
-  color: white;
+  color: #fff;
   font-size: 18px;
   text-decoration: none;
   display: inline-block;
@@ -149,6 +151,12 @@ a {
     display: block;
     margin-left: 8px;
     float: left; }
+  #signup .error2, #award_popup .error2, #contact_author_popup .error2, #back_project_popup .error2, #register .error2 {
+    visibility: hidden;
+    margin-top: 4px;
+    display: block;
+    margin-left: 8px;
+    float: left; }
   #signup .message, #award_popup .message, #contact_author_popup .message, #back_project_popup .message, #register .message {
     visibility: hidden;
     display: block;
@@ -188,7 +196,7 @@ a {
     float: right; }
   #signup .button, #award_popup .button, #contact_author_popup .button, #back_project_popup .button, #register .button {
     background-color: #2099be;
-    color: white;
+    color: #fff;
     float: left;
     line-height: 30px;
     -webkit-border-radius: 4px;
@@ -260,7 +268,7 @@ a {
   min-height: 250px;
   display: none;
   background-color: #464646;
-  color: white;
+  color: #fff;
   position: absolute;
   z-index: 100;
   left: 530px;
@@ -289,7 +297,7 @@ a {
       display: block; }
   #userbox_inner a {
     text-decoration: none;
-    color: white; }
+    color: #fff; }
   #userbox_inner a:hover {
     text-decoration: none;
     color: #2099be;
@@ -313,7 +321,7 @@ html, body {
 
 body {
   margin: 0px;
-  background: white;
+  background: #fff;
   font-family: "Titillium Web", sans-serif; }
   body a {
     border: 0px;
@@ -332,7 +340,8 @@ body {
   width: 100%;
   height: 600px;
   min-width: 960px;
-  background-color: #464646; }
+  background-color: #464646;
+  padding-top: 45px; }
 
 #slider img {
   width: 151.36364px;
@@ -352,7 +361,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 25px;
-  min-height: 500px; }
+  min-height: 500px;
+  padding-top: 50px; }
 
 #search {
   color: #464646;
@@ -365,9 +375,8 @@ body {
 
 #search ul {
   list-style: none;
-  z-index: 100; 
-  display: inline-block;
- }
+  z-index: 100;
+  display: inline-block; }
 
 #search ul li {
   position: relative;
@@ -417,7 +426,7 @@ body {
 
 #search ul li ul li:hover {
   background: #2099be;
-  color: white; }
+  color: #fff; }
 
 #search ul li:hover ul {
   display: block;
@@ -427,13 +436,11 @@ body {
 .filter_status {
   margin-top: -27px;
   margin-left: 283px;
-  font-size: 15px; 
-}
-.filter_status label {
-  padding-right: 13px;
-  font-size: 15px;
-  padding-left: 4px; 
-}
+  font-size: 15px; }
+  .filter_status label {
+    padding-right: 13px;
+    font-size: 15px;
+    padding-left: 4px; }
 
 #projects_holder {
   width: 960px; }
@@ -502,7 +509,7 @@ body {
 #newpr_main .button {
   display: inline-block;
   background-color: #464646;
-  color: white;
+  color: #fff;
   float: right;
   line-height: 30px;
   -webkit-border-radius: 4px;
@@ -519,7 +526,7 @@ body {
   text-decoration: none;
   cursor: not-allowed;
   display: inline-block;
-  color: white;
+  color: #fff;
   float: right;
   line-height: 30px;
   -webkit-border-radius: 4px;
@@ -530,7 +537,7 @@ body {
 #newpr_breadcrums {
   background: #2b2b2b;
   width: 100%;
-  color: white;
+  color: #fff;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -542,7 +549,7 @@ body {
   font-size: 12px;
   font-weight: 600; }
   #newpr_breadcrums a {
-    color: white;
+    color: #fff;
     text-decoration: underline; }
   #newpr_breadcrums a:hover {
     color: #2099be;
@@ -626,7 +633,7 @@ body {
   width: 225px;
   min-height: 150px;
   background-color: #464646;
-  color: white; }
+  color: #fff; }
   .newpr_right .img_holder img {
     width: 225px;
     height: auto; }
@@ -641,7 +648,7 @@ body {
   width: 225px;
   height: 160px;
   background-color: #464646;
-  color: white;
+  color: #fff;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -697,7 +704,7 @@ body {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  color: white; }
+  color: #fff; }
 
 .fileUpload input.upload {
   position: absolute;
@@ -850,14 +857,14 @@ body {
     height: auto; }
   .project_view_main .button {
     background-color: #2099be;
-    color: white;
+    color: #fff;
     line-height: 30px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px; }
   .project_view_main .button:hover {
     background-color: #464646;
-    color: white; }
+    color: #fff; }
   .project_view_main .left {
     float: left;
     width: 610px; }
@@ -911,7 +918,7 @@ body {
     width: 265px;
     height: 400px;
     background-color: #464646;
-    color: white; }
+    color: #fff; }
     .project_view_main .funding_overview h1 {
       font-size: 24px;
       display: block; }
@@ -920,7 +927,7 @@ body {
       display: block;
       padding-top: 15px; }
     .project_view_main .funding_overview hr {
-      color: white;
+      color: #fff;
       margin-top: 45px;
       margin-bottom: 50px; }
     .project_view_main .funding_overview .content {
@@ -968,7 +975,7 @@ body {
     width: 265px;
     margin-top: 20px;
     background-color: #2099be;
-    color: white;
+    color: #fff;
     font-size: 14px;
     font-weight: 700; }
     .project_view_main .author_overview .content {
@@ -1006,14 +1013,14 @@ body {
       .project_view_main .author_overview .content a {
         text-decoration: none;
         border: none;
-        color: white; }
+        color: #fff; }
       .project_view_main .author_overview .content a:hover {
         text-decoration: none;
         border: none;
         color: #464646; }
     .project_view_main .author_overview .button {
       background-color: #464646;
-      color: white;
+      color: #fff;
       width: 130px;
       float: right; }
     .project_view_main .author_overview .button:hover {
@@ -1051,16 +1058,16 @@ body {
   .project_view_main .reward:hover {
     cursor: pointer;
     background-color: #464646;
-    color: white; }
+    color: #fff; }
     .project_view_main .reward:hover h2 {
-      color: white; }
+      color: #fff; }
   .project_view_main .reward_back_amout {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     border-radius: 5px;
-    background-color: white; }
+    background-color: #fff; }
   .project_view_main .active {
     color: #2099be; }
 
@@ -1161,7 +1168,7 @@ body {
   min-height: 280px;
   min-width: 960px;
   font-size: 12px;
-  color: white;
+  color: #fff;
   background: #464646;
   /* Old browsers */
   background: -moz-linear-gradient(top, #464646 0%, #2b2b2b 100%);
@@ -1176,10 +1183,10 @@ body {
   /* IE10+ */
   background: linear-gradient(to bottom, #464646 0%, #2b2b2b 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#464646', endColorstr='#2b2b2b',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#464646', endColorstr='#2b2b2b',GradientType=0 );
   /* IE6-9 */ }
   .footer a {
-    color: white; }
+    color: #fff; }
   .footer a:hover {
     color: #2099be; }
 
@@ -1193,7 +1200,7 @@ body {
   margin-right: auto;
   width: 100%;
   width: 960px;
-  color: white;
+  color: #fff;
   font-weight: 700; }
 
 .footer h1 {
@@ -1231,7 +1238,7 @@ body {
   min-height: 200px; }
   #setting_menu p {
     display: block;
-    color: white;
+    color: #fff;
     line-height: 50px;
     padding-left: 20px; }
   #setting_menu p.active_settings_menu {
@@ -1305,7 +1312,7 @@ body {
     line-height: 45px;
     padding: 0px 15px;
     background-color: #2b2b2b;
-    color: white;
+    color: #fff;
     font-size: 14px;
     text-decoration: none;
     display: inline-block;
@@ -1315,7 +1322,7 @@ body {
     #mail_form .button a, #mail_form .button img {
       border: none;
       text-decoration: none;
-      color: white; }
+      color: #fff; }
   #mail_form .button:hover {
     background-color: #2099be; }
   #mail_form label {
@@ -1355,7 +1362,7 @@ body {
   line-height: 100px; }
 
 #error {
-  color: #ff2828;
+  color: #FF2828;
   display: block;
   line-height: 15px; }
 
@@ -1376,7 +1383,6 @@ body {
     margin-top: 87px;
     margin-left: 15px;
     float: left; } }
-
 /****************************    Comment section styling ************************************/
 .comment,
 #addCommentContainer {
@@ -1537,12 +1543,12 @@ label span.error {
   #msg_holder .msg_overview:hover {
     background: #464646;
     cursor: pointer;
-    color: white; }
+    color: #fff; }
   #msg_holder .msg_overview:last-of-type {
     border: none; }
   #msg_holder .active {
     background-color: #2099be;
-    color: white; }
+    color: #fff; }
   #msg_holder .msg_from {
     float: left;
     font-size: 12px;
@@ -1634,15 +1640,15 @@ label span.error {
     margin-left: 0px;
     margin-top: 5px; }
   #payment_rewards .reward_payment {
-    background-color: white;
+    background-color: #fff;
     color: #464646; }
     #payment_rewards .reward_payment label {
       color: #2099be; }
   #payment_rewards .reward_payment:hover, #payment_rewards .active {
     background-color: #2099be;
-    color: white; }
+    color: #fff; }
     #payment_rewards .reward_payment:hover label, #payment_rewards .active label {
-      color: white; }
+      color: #fff; }
 
 #wire .button, #gopay .button, #trans_data_wrap .button {
   background-color: #2099be;
@@ -1718,7 +1724,7 @@ label span.error {
   width: 225px;
   min-height: 150px;
   background-color: #464646;
-  color: white; }
+  color: #fff; }
   .newpr_right .img_holder img {
     width: 225px;
     height: auto; }
@@ -1738,7 +1744,7 @@ label span.error {
   width: 225px;
   height: 260px;
   background-color: #464646;
-  color: white;
+  color: #fff;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -1886,19 +1892,7 @@ label span.error {
     padding: 0 10px;
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.5);
     box-shadow: -1px 0 0 rgba(255, 255, 255, 0.1);
-    border-left: 1px solid rgba(0, 0, 0, 0.3); 
-  }
-
-#reset_pwd {
-  width: 300px; 
-}
-#reset_pwd input [type="text"] {
-  width: 300px; 
-}
-#reset_pwd p {
-  margin-bottom: 15px;
-  text-align: justify; 
-}
+    border-left: 1px solid rgba(0, 0, 0, 0.3); }
 
 .popis {
   font-size: 14px;
@@ -1922,67 +1916,67 @@ label span.error {
   border-radius: 15px;
   font-size: 10px; }
 
-.backer_list{
+/*************************************/
+#reset_pwd, #send_lost_pwd {
+  width: 300px; }
+  #reset_pwd input [type="text"], #send_lost_pwd input [type="text"] {
+    width: 300px; }
+  #reset_pwd p, #send_lost_pwd p {
+    margin-bottom: 15px;
+    text-align: justify; }
+
+.backer_list {
   width: 750px;
   min-height: 50px;
   margin-right: auto;
   margin-left: 50px;
   border-bottom: 1px solid;
   float: left;
-  padding-top: 5px;
-}
+  padding-top: 5px; }
 
 .backer_list:first-child {
-  border-top: 1px solid;
-}
+  border-top: 1px solid; }
 
 .backer_list:last-child {
-  border-bottom: 0px solid;
-}
+  border-bottom: 0px solid; }
 
-.backer_img img{
-  width:auto;
+.backer_img img {
+  width: auto;
   height: 50px;
-  padding-right: 5px;
-}
-.backer_img{
-float:left;
-}
+  padding-right: 5px; }
 
-.backer_amount{
+.backer_img {
+  float: left; }
+
+.backer_amount {
   width: 150px;
   float: right;
-  margin-top: 15px;
-}
+  margin-top: 15px; }
 
-.backer_username{
+.backer_username {
   float: left;
-  margin-top: 15px;
-}
+  margin-top: 15px; }
 
-.rotate_image_180{
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
+.rotate_image_180 {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg); }
 
-.backing_sort{
+.backing_sort {
   width: 690px;
-  margin-bottom: 15px;
-}
+  margin-bottom: 15px; }
 
-.backing_sort img{
+.backing_sort img {
   float: right;
   cursor: pointer;
-  padding-left: 2px;
-}
+  padding-left: 2px; }
 
-#public_backing label{
-  font-size: 14px;
-}
+#public_backing label {
+  font-size: 14px; }
 
 #public_backing {
-  padding-left: 15px;
-}
+  padding-left: 15px; }
+
+/*# sourceMappingURL=main.css.map */
