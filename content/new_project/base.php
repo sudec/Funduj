@@ -61,7 +61,7 @@ $_SESSION['curent_new_project_ID']=$_GET['new_project_id']; ?>
 			<td>Popis projektu</td>
 			<td>
 				<textarea id="newpr_project_short_description"  name="description" cols="35" rows="5" onkeyup="update_text(this,'#project_text','Sem príde popis Vášho projektu')"><?php echo($projects['short_description']); ?></textarea><br>
-				Pár slovami popíšte Váš projekt
+				Pár slovami popíšte Váš projekt. Tento pospis sa bude zobrazovat na hlavnej stranke.
 			</td> 
 		</tr>
 		<tr>

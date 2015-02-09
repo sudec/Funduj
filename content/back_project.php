@@ -13,10 +13,27 @@
     			$stmt->execute();
     			$results_awards = $stmt->fetchAll();
 	}
+        
+        if ($stmt =	$dbh->prepare("SELECT userID FROM ".$table_prefix."_projects WHERE projectID=? ")){
+        	    $stmt->bindValue(1, $id);
+    			$stmt->execute();
+    			$project_by = $stmt->fetch();
+	}
 ?>
-<div class="message_holder" id="error_message_holder">
+<!-- <div class="message_holder" id="error_message_holder"> -->
 </div>
 <div id="payments">
+<?php    
+    /**************    PREVENT THE USER TO BACK HIS/HER OWN PROJECT *****************/
+    if ($_SESSION['user_id']==$project_by['userID']){
+        ?>
+    <script>
+        display_error_message("Nie je mozne prispiet na vlastny projekt",1);
+    </script>    
+        <?php
+    }else{/* Ending part of the else is the last closing bracket
+    /**********************************************************************************/
+?>
 	<h1>
 		1. Prosím zadajte čiastku akou si želáte prispieť
 	</h1>
@@ -132,4 +149,6 @@ if ($award_id>0 || $award_id==="no_award"){
 	$(".active").toggleClass( "active" );
 	$("#"+<?php echo $award_id?>+".reward_payment").toggleClass( "active" );
 </script>
-<?php } ?>
+<?php } 
+    }
+?>

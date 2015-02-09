@@ -13,26 +13,26 @@ if($stmt = $dbh->prepare("SELECT * FROM ".$table_prefix."_projects WHERE project
 		$curentuser=1;
 		$project_image=$projects['project_image'];
 		$project_description=$projects['project_description'];
-					$project->project_title = $projects['project_title'];
-    			    $project->approved = $projects['approved'];
-    			    $project->category=$projects['project_category'];
-    			    $project->project_location=$projects['project_location'];
-                    $project->duration=$projects['project_duration'];
-                    $project->pledge_amount=$projects['pledge_amount'];
-                    $project->short_description=$projects['short_description'];
-                    $project->project_chalanges=$projects['project_chalanges'];
-                    $project->faq=$projects['project_faq'];
-                    $project->project_video=$projects['project_video'];
-                    $project->project_description=$projects['project_description'];
-                    $project->userID=$projects['userID'];
-					$project->status=$projects['status'];
-					$project->create_date=$projects['create_date'];
-					$project->user_type=$projects['user_type'];
-					$project->statusID=$projects['statusID'];
-					$project->terms_accepted=$projects['terms_accepted'];
-					$project->project_image=$projects['project_image'];
-					$project->submited=$projects['submited'];
-					$project->last_page_filled=$projects['last_page_filled'];
+		$project->project_title = $projects['project_title'];
+    		$project->approved = $projects['approved'];
+    		$project->category=$projects['project_category'];
+    		$project->project_location=$projects['project_location'];
+                $project->duration=$projects['project_duration'];
+                $project->pledge_amount=$projects['pledge_amount'];
+                $project->short_description=$projects['short_description'];
+                $project->project_chalanges=$projects['project_chalanges'];
+                $project->faq=$projects['project_faq'];
+                $project->project_video=$projects['project_video'];
+                $project->project_description=$projects['project_description'];
+                $project->userID=$projects['userID'];
+		$project->status=$projects['status'];
+		$project->create_date=$projects['create_date'];
+		$project->user_type=$projects['user_type'];
+		$project->statusID=$projects['statusID'];
+		$project->terms_accepted=$projects['terms_accepted'];
+		$project->project_image=$projects['project_image'];
+		$project->submited=$projects['submited'];
+		$project->last_page_filled=$projects['last_page_filled'];
 	}else{
 		$curentuser=0;
 	}
@@ -77,7 +77,7 @@ if ($stmt =	$dbh->prepare("SELECT * FROM ".$table_prefix."_categories")){
 				<li id="2"><?php if ($project->last_page_filled >= 2 ){echo "<a href='?opt=new_project&page=2&new_project_id=".$_GET['new_project_id']."'>Základné Informácie</a>";}else{echo "Základné Informácie";}?></li>
 				<li id="3"><?php if ($project->last_page_filled >= 3 ){echo "<a href='?opt=new_project&page=3&new_project_id=".$_GET['new_project_id']."'>Odmeny</a>";}else{echo "Odmeny";}?></li>
 				<li id="4"><?php if ($project->last_page_filled >= 4 ){echo "<a href='?opt=new_project&page=4&new_project_id=".$_GET['new_project_id']."'>Popis</a>";}else{echo "Popis";}?></li>
-				<li id="5"><?php if ($project->last_page_filled >= 5 ){echo "<a href='?opt=new_project&page=5&new_project_id=".$_GET['new_project_id']."'>O Autorovi</a>";}else{echo "O Autorovy";}?></li>
+				<li id="5"><?php if ($project->last_page_filled >= 5 ){echo "<a href='?opt=new_project&page=5&new_project_id=".$_GET['new_project_id']."'>O Autorovi</a>";}else{echo "O Autorovi";}?></li>
 				<li id="6"><?php if ($project->last_page_filled >= 6 ){echo "<a href='?opt=new_project&page=6&new_project_id=".$_GET['new_project_id']."'>Prehľad</a>";}else{echo "Prehľad";}?></li>
 			</ul>
 		</div>

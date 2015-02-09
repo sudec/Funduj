@@ -125,8 +125,8 @@
 		<!-- *************************  Contact author popup *****************  -->
 		<div id='contact_author_popup' class='contact_author_popup' style='display: none;'>
 			<h1> Odoslať správu používateľovi <?php echo  $project->author; ?></h1>
-			<input type="text" name="message_subject" id="message_subject" value="Predmet..."  onfocus="clear_input(this,'Predmet...')" onblur="fil_input(this,'Predmet...')"/>
-			<textarea id="message_body"></textarea>
+			<input type="text" name="message_subject" id="message_subject" onfocus="clear_input(this,'Predmet...')" onblur="fil_input(this,'Predmet...')" value="Predmet..."  />
+			<textarea id="message_body" onfocus="clear_input(this,'Sprava...')" onblur="fil_input(this,'Sprava...')"></textarea>
 			<?php if (login_check($dbh) == true && isset($_SESSION['user_id'])) {?>
 			<a href="javascript:void(0)" id="message_send_button" class="button" onClick="send_message(<?php echo $project->userID=$result['userID'];?>, <?php echo $_SESSION['user_id'];?>);">Odoslať</a>
 			<?php } else {?>
@@ -135,5 +135,4 @@
 			echo ("<p class='error2 red' id='error_author'>Text</p>");
 			?>		
 		</div>
-		<!-- *************************   award popup *****************  -->
 	</div>

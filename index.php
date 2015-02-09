@@ -229,7 +229,12 @@
 			<?php 
 				if($_GET['opt']=='new_project')
 				{
+                                    if (login_check($dbh) == true){
 					include('content/new_project.php');
+                                    }else{
+                                        ?><script>display_error_message("Pre vytvorenie projektu musite byt prihlaseny",1)</script><?php
+					include('content/login_form.php');	
+                                    }	
 				}
 				elseif ($_GET['opt']=='project')
 				{

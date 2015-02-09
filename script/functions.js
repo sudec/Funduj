@@ -52,8 +52,8 @@ $(document).ready(function() {
 		});
 		$('#error_author').css("visibility", "hidden");
 		$("#error_author").attr("class", "error1 red");
-		$("#message_subject").val("");
-		$("#message_body").val("");
+		$("#message_subject").val("Predmet...");
+		$("#message_body").val("Sprava...");
 	});
 
 	/**********   Event handler for carousel in project detail view ********************/
@@ -178,7 +178,7 @@ $(document).ready(function() {
 	$("#newpr_project_pledge_amount").numeric({
 		negative: false
 	});
-	$("#newpr_award_amount").numeric({
+	$(".newpr_award_amount").numeric({
 		negative: false
 	});
 	$("#phone").numeric({
@@ -226,6 +226,8 @@ $(document).ready(function() {
 		}
 		$("#paypal_form").submit();
 	});
+        
+        
 
 
 	/*******************************************************************/
@@ -265,6 +267,7 @@ $(document).ready(function() {
 		});
 		e.preventDefault(); //STOP default action
 	});
+        /***************************************************/
 });
 /*************************************************************************************************************************************/
 /*************************************************************************************************************************************/
@@ -663,7 +666,7 @@ function submit_project() {
 	});
 }
 
-function validate_save_user_details() {
+function validate_save_user_details(submit) {
 	var valid = 1;
 	if (!($('#fyzicka').is(':checked')) && !($('#pravnicka').is(':checked'))) {
 		valid = 0;
@@ -748,7 +751,11 @@ function validate_save_user_details() {
 					/*    SUBMIT the user details  *///
 					if (valid) {
 						$(".error_user_details").remove();
-						save_user_details();
+                                                if(submit){
+                                                    save_user_details(true);
+                                                }else{
+                                                    save_user_details(false);
+                                                }
 					}
 				}
 				},
@@ -756,7 +763,15 @@ function validate_save_user_details() {
 	}
 }
 
-function save_user_details() {
+function validate_save_user_details_checkbox_check(){
+    if ($("#newpr_agree_checkbox").prop('checked') && $("#newpr_agree_checkbox2").prop('checked')){
+        validate_save_user_details(true);
+    }else{
+            display_error_message("Pre pokracovanie je potrebne aby ste suhlasili s podmienkami pouzivania a potvrdili spravnost vyplnenych udajov zaskrtnutim prislusnych poly",1);
+    }
+}
+
+function save_user_details(next) {
 	var type = null;
 	var company = null;
 	var ICO = null;
@@ -817,7 +832,13 @@ function save_user_details() {
 		},
 		success: function(response) {
 			console.log(response);
-			$("#newpr_submit_user").prop("href", "?opt=new_project&page=6&new_project_id=" + $.getUrlVar('new_project_id'));
+                        if(next){
+                            window.location.replace("?opt=new_project&page=6&new_project_id=" + $.getUrlVar('new_project_id'));
+                        }
+                        else{
+                            display_error_message("Udaje boli uspesne ulozene",0,5);
+                        }
+			//$("#newpr_submit_user").prop("href", "?opt=new_project&page=6&new_project_id=" + $.getUrlVar('new_project_id'));
 		}
 	});
 }
@@ -1070,11 +1091,12 @@ function send_message(to, from) {
 					$('#message_send_button').html("Odoslať");
 					$("#error_author").removeClass("red").addClass("green");
 					$("#message_body").val("");
-					$("#message_subject").val("");
 					$("#message_subject").val("Predmet...");
 					$("#error_author").text("Vaša správa bola odoslaná!");
 					$('#error_author').css("visibility", "visible");
-					$("#error_author").attr("class", "error1 green");
+					$("#error_author").attr("class", "error2 green");
+                                        $("#contact_author_popup").bPopup().close();
+                                        display_error_message("Vasa sprava bola odoslana",0,5);
 				}
 			});
 		}
@@ -1187,7 +1209,7 @@ function display_error_message(msg, type, timeout) {
 		$('.message_holder').delay(timeout*1000).hide("slow");
 	}
 	if (isScrolledIntoView(".message_holder") === false) {
-		scroolto("error_message_holder");
+		window.scrollTo(0, 0);
 	}
 }
 

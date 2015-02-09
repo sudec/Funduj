@@ -10,7 +10,7 @@ if (isset($_POST['action']) && $_POST['action']=='login'){
 		   $password = $_POST['p']; // The hashed password.
 		   if(login($username, $password, $dbh) == true) {
 			  // Login success
-			   echo("Uspesne prihlaseny");   
+			   echo("Uspesne prihlasenie. Budete presmerovany na uvodnu stranku.");   
 		   } else {
 			  // Login failed
 				header('HTTP/1.1 403 Forbidden');

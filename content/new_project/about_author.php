@@ -76,8 +76,10 @@ $_SESSION['curent_new_project_ID']=$_GET['new_project_id']; ?>
 		</form>
 	</div>
 	<div id="agree_box">
-			<a href="javascript:void(0)" id="newpr_submit_user" onclick="validate_save_user_details()"><div class="button">Ďalej</div></a>
-			<a href="javascript:void(0)" id="newpr_save_base" onclick="validate_save_user_details()"><div class="save_button" >Uložiť</div></a>
+                        <input type="checkbox" name="newpr_agree_checkbox" value="correct_data" id="newpr_agree_checkbox"><label for="newpr_agree_checkbox">Potvrdzujem ze vsetky udaje su vyplnene spravne</label><div class="clear"></div>
+                        <input type="checkbox" name="newpr_agree_checkbox2" value="agree_with_vop" id="newpr_agree_checkbox2"><label for="newpr_agree_checkbox2">Potvrdzujem ze som si precital podmienky pouzivania a suhlasim s nimi</label><div class="clear"></div>
+			<a href="javascript:void(0)" id="newpr_submit_user" onclick="validate_save_user_details_checkbox_check()"><div class="button">Ďalej</div></a>
+			<a href="javascript:void(0)" id="newpr_save_base" onclick="validate_save_user_details(false)"><div class="save_button" >Uložiť</div></a>
 			<a href="?opt=new_project&page=4&new_project_id=<?php echo $_GET['new_project_id']; ?>" id="newpr_submit_awards"><div class="button">Späť</div></a>
 	</div>
 </div>

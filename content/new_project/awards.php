@@ -13,7 +13,7 @@ $_SESSION['curent_new_project_ID']=$_GET['new_project_id']; ?>
 				<label for="name_1">Názov</label><input id="newpr_award_title" title="Zadajte krátky a výstižný názov tejto odmeny" class="1" type="text" name="nazov">
 			</div>
 			<div id="amount">
-				<label for="amount_1">Suma</label><input title="Minimálna suma v eurách pre túto odmenu" type="text" id="newpr_award_amount" class="1" name="amount">
+				<label for="amount_1">Suma</label><input title="Minimálna suma v eurách pre túto odmenu" type="text" id="newpr_award_amount" class="1 newpr_award_amount" name="amount">
 			</div>
 			<div id="description">
 				<label for="description_1">Popis</label><textarea cols="55" id="newpr_award_description" title="Sem naíšte konkrétne čo dostane používateľ ktorý prispeje danú sumu k Vášmu projektu" class="1" rows="3" name="description"></textarea>
@@ -36,7 +36,7 @@ $_SESSION['curent_new_project_ID']=$_GET['new_project_id']; ?>
 							<label for='name_".$award['awardID']."'>Názov</label><input id='newpr_award_title' class='".$award['awardID']."' type='text' name='nazov' value='".$award['title']."'>
 						</div>
 						<div id='amount'>
-							<label for='amount_".$award['awardID']."'>Suma</label><input type='text' id='newpr_award_amount' class='".$award['awardID']."' name='amount' value='".$award['amount']."'>
+							<label for='amount_".$award['awardID']."'>Suma</label><input type='text' id='newpr_award_amount' class='".$award['awardID']." newpr_award_amount' name='amount' value='".$award['amount']."'>
 						</div>
 						<div id='description'>
 							<label for='description_".$award['awardID']."'>Popis</label><textarea cols='55' id='newpr_award_description' class='".$award['awardID']."' rows='3' name='description'>".$award['description']."</textarea>

@@ -124,6 +124,7 @@ a {
   margin-left: 8px; }
 
 #signup, #award_popup, #contact_author_popup, #back_project_popup, #register {
+  font-family: "Titillium Web", sans-serif;
   color: #464646;
   font-size: 14px;
   width: 350px;
@@ -169,6 +170,7 @@ a {
     color: #2099be;
     font-size: 18px; }
   #signup input[type=text], #signup input[type=password], #award_popup input[type=text], #award_popup input[type=password], #contact_author_popup input[type=text], #contact_author_popup input[type=password], #back_project_popup input[type=text], #back_project_popup input[type=password], #register input[type=text], #register input[type=password] {
+    font-family: "Titillium Web", sans-serif;
     width: 350px;
     font-weight: 700;
     font-size: 12px;
@@ -304,13 +306,16 @@ a {
     cursor: pointer; }
 
 #contact_author_popup textarea {
-  width: 348px;
+  font-family: "Titillium Web", sans-serif;
+  width: 350px;
   font-weight: 700;
   font-size: 12px;
   color: #ababab;
   border: solid 1px #2099be;
   height: 150px;
-  padding-left: 10px; }
+  padding-left: 10px;
+  padding-top: 10px;
+  overflow: auto; }
 
 /*****************  end of top menu ***************************/
 * {
@@ -674,6 +679,11 @@ body {
   text-align: justify;
   font-size: 12px;
   font-weight: 600; }
+  .newpr_table textarea {
+    width: 300px;
+    height: 150px;
+    overflow: auto;
+    padding-top: 5px; }
 
 .newpr_table tr {
   margin-bottom: 20px; }
