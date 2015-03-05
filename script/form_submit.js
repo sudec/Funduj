@@ -67,8 +67,7 @@ function validate_user(defaults) {
 				}else
 				{
 					hide_error_message();
-
-					add_user();
+                                        add_user();
 				}
 			}
 		}
@@ -97,7 +96,19 @@ function add_user() {
 		success: function(response) {
 			$("#register_button").css("background-image", "none");
 			$("#register_button").css("color","#ffffff");  
-			display_error_message("Ďakujeme za Váš záujem. Vaša registrácia bola úspešná. Na zadanú e-mailovú adresu održíte e-mail spolu s pokynmi pre aktiváciu Vášho konta.",0);
+			display_error_message("Ďakujeme za Váš záujem. Vaša registrácia bola úspešná. Na zadanú e-mailovú adresu održíte e-mail spolu s pokynmi pre aktiváciu Vášho konta.",0,5);
+                        $("#user_name_reg").val("Meno...");
+                        $("#user_name_reg").css("color", "#ababab");
+                        $("#pass_reg").val("Heslo...");
+                        $("#pass_reg").attr("type", "text");
+                        $("#pass_reg").css("color", "#ababab");
+                        $("#pass2_reg").val("Heslo ešte raz...");
+                        $("#pass2_reg").attr("type", "text");
+                        $("#pass2_reg").css("color", "#ababab");
+                        $("#e_mail_reg").val("E-mail...");
+                        $("#e_mail_reg").css("color", "#ababab");
+                        $(".error").css("color", "red");
+                        $(".error").css("visibility", "hidden");
 		}
 	});
 }

@@ -10,21 +10,23 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/lib/db.php');
 	   $password1 = hash('sha512', $password.$random_salt);
 	   $query="SELECT * FROM ".$table_prefix."_users WHERE username=?";
 	   $confirm_hash=hash('sha512', $password1.$random_salt.$email);
-	if ($stmt2 = $dbh->prepare("SELECT username FROM ".$table_prefix."_users_not_confirmed WHERE username = ? LIMIT 1")){
+            if ($stmt2 = $dbh->prepare("SELECT username FROM ".$table_prefix."_users_not_confirmed WHERE username = ? OR e_mail=? LIMIT 1")){
 		$stmt2->bindParam('1',$username, PDO::PARAM_STR);
+                $stmt2->bindParam('2',$email, PDO::PARAM_STR);
 		$stmt2->execute();
 		$stmt2->result=$stmt2->fetch();
 		if($stmt2->result!=0){
 			header('HTTP/1.1 403 Forbidden');
-			exit("Používateľ s týmto menom je už zaregistrovaný. V prípade že ste neobdržali potvrdzovací e-mail kliknite sem pre jeho znovuzaslanie.");
+			exit("Používateľ s týmto menom alebo e-mailouv adresou je už zaregistrovaný. V prípade že ste neobdržali potvrdzovací e-mail kliknite sem pre jeho znovuzaslanie.");
 		}else{
-			if ($stmt =	$dbh->prepare("SELECT username FROM ".$table_prefix."_users WHERE username = ? LIMIT 1")){
+			if ($stmt = $dbh->prepare("SELECT username FROM ".$table_prefix."_users WHERE username = ? OR e_mail=? LIMIT 1")){
 				$stmt->bindParam('1',$username, PDO::PARAM_STR);
+                                $stmt->bindParam('2',$email, PDO::PARAM_STR);
 				$stmt->execute();
 				$stmt->result=$stmt->fetch();
 				if($stmt->result!=0){
 					header('HTTP/1.1 403 Forbidden');
-					exit("Používateľ s týmto menom už existuje");
+					exit("Používateľ s týmto menom alebo e-mailovou adresou už existuje");
 				}else{
 					 if ($insert_stmt = $dbh->prepare("INSERT INTO ".$table_prefix."_users_not_confirmed (username, e_mail, password, salt, member_since, confirm_hash) VALUES (?, ?, ?, ?, ?, ?)")) {    
 						  $insert_stmt->bindValue(1, $username);
@@ -50,5 +52,5 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/lib/db.php');
 				}
 			}
 		}
-	}
+            }
  ?>

@@ -63,8 +63,8 @@ $(document).ready(function() {
 	});
 
 
-	/* Clear the register form when the register button is clicked */
-	$("#register_go").click(function() {
+	/* Clear the register form when the register button is clicked 
+	$("#register_button").click(function() {
 		$("#user_name_reg").val("Meno...");
 		$("#user_name_reg").css("color", "#ababab");
 		$("#pass_reg").val("Heslo...");
@@ -78,7 +78,7 @@ $(document).ready(function() {
 		$(".error").css("color", "red");
 		$(".error").css("visibility", "hidden");
 	});
-/**
+
  * Register Enter button 
  */
 	$('#user_name_main').on('click', function() {
@@ -188,20 +188,20 @@ $(document).ready(function() {
 	$("#wire .button").click(function(e) {
 		if (!$("input[name='award_select']:checked").val()) {
 			msg = "Prosím vyberte si jednu z odmien. V prípade ak si neželáte obdržať odmenu vyberte možnosť \"Bez odmeny!\"";
-			display_error_message(msg, 1);
+			display_error_message(msg, 1, 4);
 			e.preventDefault();
 			return;
 		}
 		if (parseFloat($('.fund_amount').val()) < 1 || isNaN(parseFloat($('.fund_amount').val()))) {
 			msg = "Príspevok musí byť v minimálnej výške 1.00 €";
-			display_error_message(msg, 1);
+			display_error_message(msg, 1, 4);
 			e.preventDefault();
 			return;
 		}
 		var params = JSON.parse($('input[name=award_select]:checked').val());
 		if (parseFloat(params.award_min_val) > parseFloat($('.fund_amount').val())) {
 			msg = "Vybraná odmena vyžaduje minimálny príspevok v hodnote " + params.award_min_val + " €";
-			display_error_message(msg, 1);
+			display_error_message(msg, 1, 4);
 			e.preventDefault();
 			return;
 		}
@@ -213,14 +213,14 @@ $(document).ready(function() {
 	$(".paypal_button").click(function(e) {
 		if (!$("input[name='award_select']:checked").val()) {
 			msg = "Prosím vyberte si jednu z odmien. V prípade ak si neželáte obdržať odmenu vyberte možnosť \"Bez odmeny!\"";
-			display_error_message(msg, 1);
+			display_error_message(msg, 1, 4);
 			e.preventDefault();
 			return;
 		}
 		var params = JSON.parse($('input[name=award_select]:checked').val());
 		if (parseFloat(params.award_min_val) > parseFloat($('.fund_amount').val())) {
 			msg = "Vybraná odmena vyžaduje minimálny príspevok v hodnote " + params.award_min_val + " €";
-			display_error_message(msg, 1);
+			display_error_message(msg, 1, 4);
 			e.preventDefault();
 			return;
 		}
@@ -248,17 +248,17 @@ $(document).ready(function() {
 			data: data,
 			error: function(error) {
 				console.log(error);
-				display_error_message("Pri ukladaní sa vyskytla chyba. Prosím skúste znova neskôr", 1);
+				display_error_message("Pri ukladaní sa vyskytla chyba. Prosím skúste znova neskôr", 1, 4);
 			},
 			success: function(data) {
 				if (data.status === "error"){
-					display_error_message(data.message, 1);
+					display_error_message(data.message, 1, 4);
 					$("#old_pass").val("");
 					$("#new_pass").val("");
 					$("#new_pass2").val("");
 				}
 				else {
-					display_error_message(data.message, 0);
+					display_error_message(data.message, 0, 4);
 					$("#old_pass").val("");
 					$("#new_pass").val("");
 					$("#new_pass2").val("");
@@ -483,7 +483,7 @@ function save_base_info(prompt_succes) {
 			$("#newpr_submit_base_information").prop("href", "?opt=new_project&page=3&new_project_id=" + $.getUrlVar('new_project_id'));
 			if (prompt_succes === true) {
 				msg = "Zmeny úspešne uložené";
-				display_error_message(msg, 0);
+				display_error_message(msg, 0, 4);
 			}
 		}
 	});
@@ -521,12 +521,12 @@ function save_awards(award_num) {
 		},
 		error: function(obj, text, error) {
 			msg = "Pri ukladaní sa vyskytla chyba";
-			display_error_message(msg, 1);
+			display_error_message(msg, 1, 4);
 		},
 		success: function(response) {
 			$("#newpr_submit_awards").prop("href", "?opt=new_project&page=4&new_project_id=" + $.getUrlVar('new_project_id'));
 			msg = "Zmeny úspešne uložené";
-			display_error_message(msg, 0);
+			display_error_message(msg, 0, 4);
 		}
 	});
 
@@ -622,7 +622,7 @@ function save_description(prompt_succes) {
 			if (prompt_succes === true) {
 				if (prompt_succes === true) {
 					msg = "Zmeny úspešne uložené";
-					display_error_message(msg, 0);
+					display_error_message(msg, 0, 4);
 				}
 			}
 		}
@@ -767,7 +767,7 @@ function validate_save_user_details_checkbox_check(){
     if ($("#newpr_agree_checkbox").prop('checked') && $("#newpr_agree_checkbox2").prop('checked')){
         validate_save_user_details(true);
     }else{
-            display_error_message("Pre pokracovanie je potrebne aby ste suhlasili s podmienkami pouzivania a potvrdili spravnost vyplnenych udajov zaskrtnutim prislusnych poly",1);
+            display_error_message("Pre pokracovanie je potrebne aby ste suhlasili s podmienkami pouzivania a potvrdili spravnost vyplnenych udajov zaskrtnutim prislusnych poly",1, 4);
     }
 }
 
@@ -1280,7 +1280,7 @@ function check_IBAN(input, default_text){
 				error: function(){},
 				success: function(response){
 					if (response.result){
-						display_error_message('Nesprávny IBAN',1);
+						display_error_message('Nesprávny IBAN',1,4);
 					}else{
 						$(input).val(response.human_IBAN);
 					}
@@ -1310,7 +1310,7 @@ function send_lost_password(){
 				success: function(response) {
 					console.log(response);
 					if (response.status === 'error'){
-						display_error_message(response.message, 1);
+						display_error_message(response.message, 1, 4);
 					}else{
 						display_error_message(response.message, 0, 15);
                                                 $('#reset_pwd_mail').val("");
@@ -1328,7 +1328,7 @@ function change_lost_password(defaults_text){
 	var new_pass_enc = hex_sha512(pass1);
 	var new_pass_enc2 = hex_sha512(pass2);
 	if ((document.getElementById("reset_pwd1").value).length <= 5 || document.getElementById("reset_pwd1").value === defaults_text) {
-		display_error_message("Heslo musí obsahovať aspoň 6 znakov",1);
+		display_error_message("Heslo musí obsahovať aspoň 6 znakov",1, 4);
 		return false;
 	}else{
 		if (pass1 === pass2){
@@ -1349,7 +1349,7 @@ function change_lost_password(defaults_text){
 					success: function(response) {
 						console.log(response);
 						if (response.status === 'error'){
-							display_error_message(response.message, 1);
+							display_error_message(response.message, 1, 4);
 						}else{
 							display_error_message(response.message, 0, 15);
                                                         $('#reset_pwd1').val("");
@@ -1362,7 +1362,7 @@ function change_lost_password(defaults_text){
 					}
 			});
 		}else{
-			display_error_message("Heslá sa nezhodujú.", 1);
+			display_error_message("Heslá sa nezhodujú.", 1, 4);
 			return false;
 		}
 	}
