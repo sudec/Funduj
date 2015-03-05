@@ -170,6 +170,7 @@ $(document).ready(function() {
 		$('input[name=item_number]').val(myAward.award_id);
 		$('input[name=amount]').val(myAward.award_min_val);
 		$('input[name=custom]').val("project_id=" + myAward.project_id + "&user_id=" + myAward.user_id + "&award_id=" + myAward.award_id);
+                $('#fund_amount').val(myAward.award_min_val);
 	});
 
 	$("input.fund_amount").numeric({

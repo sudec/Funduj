@@ -20,8 +20,8 @@
     			$project_by = $stmt->fetch();
 	}
 ?>
-<!-- <div class="message_holder" id="error_message_holder"> -->
-</div>
+<!-- <div class="message_holder" id="error_message_holder"> 
+</div>-->
 <div id="payments">
 <?php    
     /**************    PREVENT THE USER TO BACK HIS/HER OWN PROJECT *****************/
